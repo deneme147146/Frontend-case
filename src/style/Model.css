@@ -1,0 +1,38 @@
+.model-container {
+    display: flex;
+    gap: 10px;
+    height: 150px;
+  }
+  
+  .model-card {
+    align-items: center;
+    padding: 10px 25px 10px 10px;
+    background-color: #ffffff; /* Beyaz renk */
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* Gölgelik */
+    overflow-y: auto; /* Scroll olması için */
+  }
+  
+  .model-card label {
+    font-weight: 300; /* Yazı tipini ince yapmak için */
+  }
+  
+  .model-card input[type='checkbox'] {
+    margin-right: 8px;
+    /* Checkbox stilini sıfırla */
+    width: 16px;
+    height: 16px;
+    border-radius: 4px; /* Yuvarlatılmış köşeler */
+    border: 2px solid #007bff; /* Mavi renkli çerçeve */
+  }
+  
+  .model-card input[type='checkbox']:checked {
+    background-color: #007bff; /* Mavi renk */
+  }
+
+  .input-search-model{
+    margin-bottom: 10px;
+    margin-left: 3px;
+    height: 20px;
+
+  }
+  
