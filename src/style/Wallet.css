@@ -1,0 +1,39 @@
+.wallet-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .wallet-balance {
+    padding-left: 7px;
+    padding-right: 70px;
+  }
+  
+  .wallet-user {
+    padding-right: 110px;
+  }
+
+  .wallet-input .ci-search-icon {
+    position: absolute;
+    top: 16px; /* İstenilen yüksekliğe göre ayarlayın */
+    left: 15px; /* İstenilen sol mesafeye göre ayarlayın */
+  }
+
+  @media (max-width: 950px) {
+    .wallet-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .wallet-balance {
+      padding-right: 20px;
+      padding-bottom: 10px;
+    }
+  
+    .wallet-user {
+      padding-right: 20px;
+    }
+    .wallet-input input {
+        width: 100%;
+      }
+  }
