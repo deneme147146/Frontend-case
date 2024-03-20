@@ -1,6 +1,7 @@
 .sort-container {
     display: flex;
     gap: 10px;
+    
   }
   
   .sort-card {
@@ -23,10 +24,10 @@
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    border: 2px solid #007bff; /* Mavi renkli çerçeve */
+    border: 2px solid #4753fc; /* Mavi renkli çerçeve */
   }
   
   .sort-card input[type='radio']:checked {
-    background-color: #007bff; /* Mavi renk */
+    background-color: #4753fc; /* Mavi renk */
   }
   

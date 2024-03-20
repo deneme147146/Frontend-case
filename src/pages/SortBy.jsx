@@ -4,7 +4,7 @@ import '../style/SortBy.css'
 const SortBy = () => {
   return (
 
-    <div>
+    <div className='all-sort'>
     <p style={{color:'grey'}}>Sort By</p>
    
     <div className="sort-container">

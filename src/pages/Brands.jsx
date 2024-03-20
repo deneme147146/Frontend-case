@@ -3,7 +3,7 @@ import '../style/Brands.css'
 
 const Brands = () => {
   return (
-    <div>
+    <div className='all-brands'>
       <p style={{color:'grey'}}>Brands</p>
       <div className="brands-container">
         <div className="brands-card">

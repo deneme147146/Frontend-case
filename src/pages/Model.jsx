@@ -3,7 +3,7 @@ import '../style/Model.css'
 
 const Model = () => {
   return (
-    <div>
+    <div className='all-model'>
       <p style={{color:'grey'}}>Model</p>
       <div className="model-container">
         <div className="model-card">

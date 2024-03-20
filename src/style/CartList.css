@@ -1,0 +1,37 @@
+.cart-container {
+    display: flex;
+    gap: 10px;
+    
+  }
+  
+  .cartlist-card {
+
+   
+    align-items: center;
+    padding: 10px 10px 10px 10px;
+    
+  
+    background-color: #ffffff; /* Beyaz renk */
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* Gölgelik */
+    margin-bottom: 30px;
+    margin-top: 40px;
+  }
+
+  .marka-name{
+    padding-right: 30px;
+  }
+
+  .cart-value-btn{
+    background-color:#4753fc ;
+    color: white;
+    font-size: 16px;
+  }
+  .btnn{
+    width: 30px;
+    height: 30px;
+  }
+
+  .price{
+    color: #4753fc;
+    margin-top: 1px;
+  }

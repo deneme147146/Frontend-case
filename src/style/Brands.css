@@ -3,13 +3,14 @@
     gap: 10px;
     height: 150px;
   }
-  
+
   .brands-card {
     align-items: center;
     padding: 10px 25px 10px 10px;
     background-color: #ffffff; /* Beyaz renk */
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* Gölgelik */
     overflow-y: auto; /* Scroll olması için */
+    height: 150px;
   }
   
   .brands-card label {
@@ -22,17 +23,19 @@
     width: 16px;
     height: 16px;
     border-radius: 4px; /* Yuvarlatılmış köşeler */
-    border: 2px solid #007bff; /* Mavi renkli çerçeve */
+    border: 2px solid #4753fc; /* Mavi renkli çerçeve */
   }
   
   .brands-card input[type='checkbox']:checked {
-    background-color: #007bff; /* Mavi renk */
+    background-color: #4753fc; /* Mavi renk */
   }
 
   .input-search{
+    border:0px;
+    padding: 6px;
     margin-bottom: 10px;
     margin-left: 3px;
     height: 20px;
-
+    background-color: #f1ecec;
   }
   
