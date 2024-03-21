@@ -1,8 +1,14 @@
 .right-column{
-    width: 25%;
-    float: right;
-    display: flex;
+    /* width: 15%;
+    float:inline-end;
+    display: flexbox;
     flex-direction: column;
+    align-items: center; */
+    grid-column: span 3;
     align-items: center;
-    margin-right: 60px;
+    justify-content: center;
+    margin-right: 165px;
+    margin-left: auto;
+   
+
 }

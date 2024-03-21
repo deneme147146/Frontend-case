@@ -1,8 +1,13 @@
 import React from 'react'
+import '../style/ProductList.css'
+import Card from './Card'
 
 const ProductList = () => {
   return (
-    <div>ProductList</div>
+    <div className='product-list'>
+      <Card></Card>
+
+    </div>
   )
 }
 

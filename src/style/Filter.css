@@ -1,11 +1,10 @@
 .filter{
   
-    width: 25%;
-    display: flex;
+
+    display: inline-flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 48px;
-  float: left;
-    
-   
+
+
+  grid-column: span 3
 }

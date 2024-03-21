@@ -1,12 +1,15 @@
 import React from 'react'
-import Filter from '../pages/Filter'
+
 import ProductList from '../pages/ProductList'
+import '../style/Dashboard.css'
+
 
 const Dashboard = () => {
   return (
-    <div>
-        <Filter></Filter>
+    <div className='dash'>
+       
         <ProductList></ProductList>
+       
     </div>
   )
 }

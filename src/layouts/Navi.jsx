@@ -13,10 +13,10 @@ const Navi = () => {
         <div className='header-center'>
         
         
-        <input style={{marginTop:10, height: 40, width: 370, paddingLeft: '30px' }}
+        <input style={{marginTop:10, height: 40, width: 400, paddingLeft: '30px' }}
         type='text'
         placeholder='Search'
-        /> <CiSearch  style={{ color:'black', position: 'absolute', top: 25, left: 472 }}  />
+        /> <CiSearch  style={{ color:'black', position: 'absolute', top: 30, left: 472 }}  />
         
         </div>
 

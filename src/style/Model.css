@@ -15,6 +15,7 @@
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* Gölgelik */
     overflow-y: auto; /* Scroll olması için */
     height: 150px;
+    margin-bottom: 15px;
   }
   
   .model-card label {

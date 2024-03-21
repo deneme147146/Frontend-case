@@ -2,30 +2,61 @@
   color: white;
   background-color: #4753fc;
   margin-top: 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /* 12 birimlik ızgara */
+  grid-gap: 10px; /* İzgara aralığı */
 }
 
 .header-left{
-  width: 25%;
-  text-align: center;
+  grid-column: span 3;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  margin-left: 125px;
+  
 }
 
 .header-center{
-  width: 50%;
+  /* width: 50%;
   height: 85%;
   align-items: center;
-  display: flex;
+  display: flex; */
+  grid-column: span 6
 }
-
-
-
 
 .header-right{
-  width: 25%;
+  /* width: 25%;
   text-align: center;
 
-  padding: 130;
+  padding: 130; */
+  grid-column: span 3
+
 }
+
+.App{
+  height: 100%;
+  width: 100%;
+}
+
+.anabir{
+
+}
+
+.anaiki{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /* 12 birimlik ızgara */
+  grid-gap: 10px; /* İzgara aralığı */
+
+}
+
+body{
+  background-color: #fafafa;
+}
+
+
+
+
+
 
 @media (min-width: 768px) {
   .header-left {
