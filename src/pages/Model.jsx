@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../style/Model.css'
+import ProductService from '../services/productService'
 
 const Model = () => {
+  const [products,setProducts] = useState([])
+
+  useEffect(()=>{
+    const productsService = new ProductService()
+
+    productsService.getProducts().then(response=> setProducts(response.data))
+  },[])
   return (
     <div className='all-model'>
       <p style={{color:'grey'}}>Model</p>
@@ -11,12 +19,19 @@ const Model = () => {
         type='text'
         placeholder='Search'
         />
-          <div>
-            <input type="checkbox" id="11" name="model" value="11" />
-            <label htmlFor="11">11</label>
-          </div>
-          <br />
-          <div>
+
+        {
+          products.map(product=>(
+            <><div key={product.id}>
+              <input type="checkbox" id={product.model} name="model" value={product.model} />
+              <label htmlFor={product.model}>{product.model}</label>
+            </div><br /></>
+          ))
+        }
+
+
+         
+          {/* <div>
             <input type="checkbox" id="12Pro" name="model" value="12Pro" />
             <label htmlFor="12Pro">12Pro</label>
           </div>
@@ -49,7 +64,7 @@ const Model = () => {
           <div>
             <input type="checkbox" id="15Pro" name="model" value="15Pro" />
             <label htmlFor="15Pro">15Pro</label>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

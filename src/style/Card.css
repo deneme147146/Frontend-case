@@ -41,3 +41,26 @@
     font-size: 15px;
     border-color: white;
   }
+
+
+  .pagination {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination span {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .pagination span:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .pagination span.active {
+    background-color: #4753fc;
+    color: white;
+  }
