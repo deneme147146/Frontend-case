@@ -1,9 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import '../style/Card.css'
 import ProductService from '../services/productService'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../store/actions/cartActions'
 
 const Card = () => {
+
+  const dispatch = useDispatch()
+
   const [products,setProducts] = useState([])
+  const [currentPage, setCurrentPage] =useState(1)
+  const productsPerPage = 12;
+
+  const handleAddToCart= (product) => {
+    dispatch(addToCart(product))
+  }
 
   useEffect(()=>{
     const productsService = new ProductService()
@@ -11,20 +22,39 @@ const Card = () => {
     productsService.getProducts().then(response=> setProducts(response.data))
   },[])
 
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+
 
   return (
-    <div className='card-container'>
-      {products.map(product => (
+    <><><div className='card-container'>
+      {currentProducts.map(product => (
         <div key={product.id} className="card">
           <img src={product.image} className="card-image" />
           <div className="card-info">
             <p className="card-price">{product.price} ₺</p>
             <h4 className="card-title">{product.name}</h4>
-            <button className="add-to-cart-btn">Add to Cart</button>
+            <button onClick={() => handleAddToCart(product)} className="add-to-cart-btn">Add to Cart</button>
           </div>
         </div>
       ))}
     </div>
+      <div className='pagination'>
+        <span onClick={() => paginate(currentPage - 1)}>&lt;</span>
+        {[...Array(Math.ceil(products.length / productsPerPage))].map((_, index) => (
+          <span className='paginat' key={index} onClick={() => paginate(index + 1)}>{index + 1}</span>
+        ))}
+        <span onClick={() => paginate(currentPage + 1)}>&gt;</span>
+
+
+      </div></>
+      <div className='sayfa-sayi'> 
+          pagination : {currentPage}
+      </div>
+      </>
   );
 
   {/*

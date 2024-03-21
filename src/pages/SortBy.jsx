@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../style/SortBy.css'
 
 const SortBy = () => {
+  const [products,setProducts] = useState([])
+
+  
+
   return (
 
     <div className='all-sort'>

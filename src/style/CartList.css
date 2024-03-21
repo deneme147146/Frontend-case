@@ -2,6 +2,7 @@
     display: flex;
     gap: 10px;
     
+    
   }
   
   .cartlist-card {
@@ -19,6 +20,10 @@
 
   .marka-name{
     padding-right: 30px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 15px;
+    
   }
 
   .cart-value-btn{
@@ -27,8 +32,9 @@
     font-size: 16px;
   }
   .btnn{
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
+    float: right;
   }
 
   .price{

@@ -4,25 +4,39 @@ import ProductService from '../services/productService'
 
 const Brands = () => {
   const [products,setProducts] = useState([])
+  const [filteredProducts, setFilteredProducts] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(()=>{
     const productsService = new ProductService()
 
-    productsService.getProducts().then(response=> setProducts(response.data))
+    productsService.getProducts().then(response=>
+      {
+         setProducts(response.data)
+        setFilteredProducts(response.data)})
   },[])
+
+  const handleSearch =(e) =>{
+    const searchTerm = e.target.value.toLowerCase();
+    setSearchTerm(searchTerm)
+    const filtered = products.filter(product=> 
+      product.brand.toLowerCase().includes(searchTerm))
+
+      setFilteredProducts(filtered)
+  }
   
   return (
     <div className='all-brands'>
       <p style={{color:'grey'}}>Brands</p>
       <div className="brands-container">
         <div className="brands-card">
-        <input className='input-search'
+        <input onChange={handleSearch} className='input-search'
         type='text'
         placeholder='Search'
         />
 
         {
-          products.map(product=> (
+          filteredProducts.map(product=> (
             <><div key={product.id}>
               <input type="checkbox" id={product.brand} name="brands" value={product.brand} />
               <label htmlFor={product.brand}>{product.brand}</label>
@@ -30,40 +44,7 @@ const Brands = () => {
           ))
         }
        
-          {/* <div>
-            <input type="checkbox" id="Samsung" name="brands" value="Samsung" />
-            <label htmlFor="Samsung">Samsung</label>
-          </div>
-          <br />
-          <div>
-            <input type="checkbox" id="Huawei" name="brands" value="Huawei" />
-            <label htmlFor="Huawei">Huawei</label>
-          </div>
-          <br />
-          <div>
-            <input type="checkbox" id="Xiaomi" name="brands" value="Xiaomi" />
-            <label htmlFor="Xiaomi">Xiaomi</label>
-          </div>
-          <br />
-          <div>
-            <input type="checkbox" id="faefa" name="brands" value="faefa" />
-            <label htmlFor="faefa">faefa</label>
-          </div>
-          <br />
-          <div>
-            <input type="checkbox" id="efaffga" name="brands" value="efaffga" />
-            <label htmlFor="efaffga">efaffga</label>
-          </div>
-          <br />
-          <div>
-            <input type="checkbox" id="rjrjrjr" name="brands" value="rjrjrjr" />
-            <label htmlFor="rjrjrjr">rjrjrjr</label>
-          </div>
-          <br />
-          <div>
-            <input type="checkbox" id="ğpkfek" name="brands" value="ğpkfek" />
-            <label htmlFor="ğpkfek">ğpkfek</label>
-          </div> */}
+          
         </div>
       </div>
     </div>

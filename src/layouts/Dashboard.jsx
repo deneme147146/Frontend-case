@@ -7,9 +7,9 @@ import '../style/Dashboard.css'
 const Dashboard = () => {
   return (
     <div className='dash'>
-       
+        
         <ProductList></ProductList>
-       
+        
     </div>
   )
 }
