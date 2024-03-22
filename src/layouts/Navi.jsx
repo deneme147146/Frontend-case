@@ -20,7 +20,7 @@ const Navi = () => {
         <input style={{marginTop:10, height: 40, width: 400, paddingLeft: '30px' }}
         type='text'
         placeholder='Search'
-        /> <CiSearch  style={{ color:'black', position: 'absolute', top: 30, left: 472 }}  />
+        /> <CiSearch  style={{ color:'black', position: 'absolute', top: 26, left: 472 }}  />
         
         </div>
 

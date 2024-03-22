@@ -3,6 +3,8 @@ import '../style/Card.css'
 import ProductService from '../services/productService'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../store/actions/cartActions'
+import { cartItems } from '../store/initialValues/cartItems'
+import { Link } from 'react-router-dom'
 
 const Card = () => {
 
@@ -11,8 +13,14 @@ const Card = () => {
   const [products,setProducts] = useState([])
   const [currentPage, setCurrentPage] =useState(1)
   const productsPerPage = 12;
+  const [cartItems , setCartItems] = useState([])
 
   const handleAddToCart= (product) => {
+    const updatedCartItems = [...cartItems, product]
+
+    setCartItems(updatedCartItems)
+
+    localStorage.setItem('cart', JSON.stringify(updatedCartItems))
     dispatch(addToCart(product))
   }
 
@@ -20,6 +28,14 @@ const Card = () => {
     const productsService = new ProductService()
 
     productsService.getProducts().then(response=> setProducts(response.data))
+
+    
+  },[])
+
+  useEffect(()=>{
+    const storedCartItems =JSON.parse(localStorage.getItem('cart')) || []
+
+    setCartItems(storedCartItems)
   },[])
 
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -33,10 +49,15 @@ const Card = () => {
     <><><div className='card-container'>
       {currentProducts.map(product => (
         <div key={product.id} className="card">
+          <Link to={`/products/${product.id}`}>
+
           <img src={product.image} className="card-image" />
+          </Link>
           <div className="card-info">
             <p className="card-price">{product.price} ₺</p>
+            <Link to={`/products/${product.id}`}>
             <h4 className="card-title">{product.name}</h4>
+            </Link>
             <button onClick={() => handleAddToCart(product)} className="add-to-cart-btn">Add to Cart</button>
           </div>
         </div>
