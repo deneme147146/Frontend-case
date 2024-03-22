@@ -6,7 +6,7 @@
   }
   
   .cartlist-card {
-
+    flex-basis: 100%;
    
     align-items: center;
     padding: 10px 10px 10px 10px;
@@ -20,10 +20,12 @@
 
   .marka-name{
     padding-right: 30px;
+    
     white-space: nowrap;
     text-overflow: ellipsis;
     font-size: 15px;
-    
+    width: 10px;
+    overflow: hidden !important;
   }
 
   .cart-value-btn{
@@ -40,4 +42,8 @@
   .price{
     color: #4753fc;
     margin-top: 1px;
+  }
+
+  .cart-value-btn {
+    text-align: center;
   }

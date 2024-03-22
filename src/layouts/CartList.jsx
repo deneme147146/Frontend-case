@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../style/CartList.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart } from '../store/actions/cartActions'
+import { addToCart, deleteToCart } from '../store/actions/cartActions'
 import ProductService from '../services/productService'
 
 const CartList = () => {
@@ -15,6 +15,10 @@ const CartList = () => {
 
     dispatch(addToCart(product))
 
+  }
+
+  const handleDeleteToCart= (product) =>{
+      dispatch(deleteToCart(product))
   }
 
 
@@ -35,9 +39,9 @@ const CartList = () => {
             
             <><div key={cartItem.product.id}>
                 <p className='marka-name' style={{ display: 'inline' }}>{cartItem.product.name}</p>
-                <button onClick={() => handleAddToCart()} className='btnn'>+</button>
+                <button onClick={() => handleAddToCart(cartItem.product)} className='btnn'>+</button>
                 <button className='cart-value-btn , btnn'>{cartItem.quantity}</button>
-                <button className='btnn'>-</button>
+                <button onClick={() => handleDeleteToCart(cartItem.product)} className='btnn'>-</button>
               </div><div>
                   <p className='price'>{cartItem.product.price * cartItem.quantity} ₺</p>
                 </div></>

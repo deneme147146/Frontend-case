@@ -2,7 +2,11 @@ import React from 'react'
 import Wallet from './Wallet'
 import { CiSearch } from "react-icons/ci";
 
+
 const Navi = () => {
+
+
+
   return (
 
     <div className='header'>
