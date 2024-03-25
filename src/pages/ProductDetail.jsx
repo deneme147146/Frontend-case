@@ -3,19 +3,18 @@ import { useParams } from 'react-router-dom'
 import ProductService from '../services/productService';
 
 const ProductDetail = () => {
-    let {id,name} = useParams()
+    let {id} = useParams()
 
-    const [product, setProduct] = useState([]);
+    const [product, setProduct] = useState(null);
 
     useEffect(()=>{
       let productDetail = new ProductService()
       productDetail.getByProductId(id).then(response=>setProduct(response.data))
+
   },[id])
   return (
     <div>
-      <div>
-      deneme: {product.name}
-      </div>
+      Merhaba 
      
     </div>
   )

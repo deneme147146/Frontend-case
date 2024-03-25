@@ -13,7 +13,7 @@ const Dashboard = () => {
       <Routes>
         <Route path='/' element={<ProductList></ProductList>}/>
         <Route path='/products' element={<ProductList></ProductList>}/>
-        <Route path='/product/:id' element={<ProductDetail></ProductDetail>}/>
+        <Route path='/products/:id' element={<ProductDetail></ProductDetail>}/>
       </Routes>
         
   
