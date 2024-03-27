@@ -6,7 +6,7 @@ import Dashboard from './layouts/Dashboard';
 import RightColumn from './layouts/RightColumn';
 import Filter from './pages/Filter';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from './store/thunk';
+import { fetchDetailProduct, fetchProducts } from './store/thunk';
 
 function App() {
 
@@ -15,10 +15,13 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchProducts());
+
   }, [dispatch]);
  
 
-  console.log("REDUX DENEME:",products)
+
+
+
 
   return (
     <div className="App">

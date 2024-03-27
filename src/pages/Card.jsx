@@ -6,6 +6,7 @@ import { addToCart } from '../store/actions/cartActions'
 import { cartItems } from '../store/initialValues/cartItems'
 import { Link } from 'react-router-dom'
 import { fetchProducts } from '../store/thunk'
+import { addLocalStorage } from '../layouts/LocalStorageHelper'
 
 const Card = () => {
 
@@ -17,11 +18,8 @@ const Card = () => {
   const [cartItems , setCartItems] = useState([])
 
   const handleAddToCart= (product) => {
-    const updatedCartItems = [...cartItems, product]
 
-    setCartItems(updatedCartItems)
-
-    localStorage.setItem('cart', JSON.stringify(updatedCartItems))
+    addLocalStorage(product)
     dispatch(addToCart(product))
   }
 
@@ -34,8 +32,9 @@ const Card = () => {
     const storedCartItems =JSON.parse(localStorage.getItem('cart')) || []
 
     setCartItems(storedCartItems)
+    
   },[])
-
+  console.log("deneme", cartItems)
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);

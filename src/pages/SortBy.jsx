@@ -1,8 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../style/SortBy.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts } from '../store/thunk';
 
 const SortBy = () => {
-  const [products,setProducts] = useState([])
+
+  const dispatch = useDispatch();
+  const { products, loading, error } = useSelector((state) => state.product);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+
+  }, [dispatch]);
+ 
 
   
 

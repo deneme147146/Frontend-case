@@ -4,26 +4,31 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addToCart, deleteToCart } from '../store/actions/cartActions'
 import ProductService from '../services/productService'
 import { fetchProducts } from '../store/thunk'
+import { addLocalStorage, getFromLocalStorage, removeFromLocalStorage } from './LocalStorageHelper'
 
 const CartList = () => {
   const { products, loading, error } = useSelector((state) => state.product);
-  const [cart, setCart] = useState([])
+  const cartItemsFromLocalStorage = getFromLocalStorage();
+
 
   const dispatch = useDispatch()
-  const storedCartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
 
   const {cartItems} = useSelector(state=> state.cart)
 
   const handleAddToCart = (product) =>{
 
+  
+
     dispatch(addToCart(product))
-
-
+    addLocalStorage(product)
   }
 
+ 
+ 
   const handleDeleteToCart= (product) =>{
       dispatch(deleteToCart(product))
-
+      removeFromLocalStorage(product)
 
   }
 
@@ -31,7 +36,8 @@ const CartList = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  console.log("deneme:", storedCartItems)
+ 
+
 
 
 

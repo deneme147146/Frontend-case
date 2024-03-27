@@ -1,2 +1,5 @@
 
-export const cartItems = []
+
+export let cartItems = []
+
+

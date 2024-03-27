@@ -4,6 +4,7 @@ import ProductService from '../services/productService';
 import "../style/ProductDetail.css"
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/actions/cartActions';
+import { addLocalStorage } from '../layouts/LocalStorageHelper';
 
 const ProductDetail = () => {
     let {id} = useParams()
@@ -12,7 +13,7 @@ const ProductDetail = () => {
 
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true); 
-    const [cartItems , setCartItems] = useState([])
+
 
     useEffect(()=>{
 
@@ -28,14 +29,12 @@ const ProductDetail = () => {
   if (loading) {
     return <div>loading..</div>;
    }else if(!product){
-    return <div>Ürün yükleniyor...</div>;
+    return <div style={{textAlign:'center', justifyContent:'center', color:'blue'}}>Ürün yükleniyor...</div>;
    }
 
    const handleAddToCart =(product) =>{
-    const updatedCartItems = [...cartItems, product]
-    setCartItems(updatedCartItems)
-
-    localStorage.setItem('cart', JSON.stringify(updatedCartItems))
+   
+    addLocalStorage(product)
     dispatch(addToCart(product))
    }
 
