@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import '../style/Card.css'
 import ProductService from '../services/productService'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../store/actions/cartActions'
 import { cartItems } from '../store/initialValues/cartItems'
 import { Link } from 'react-router-dom'
+import { fetchProducts } from '../store/thunk'
 
 const Card = () => {
 
   const dispatch = useDispatch()
 
-  const [products,setProducts] = useState([])
+  const { products, loading, error } = useSelector((state) => state.product);
   const [currentPage, setCurrentPage] =useState(1)
   const productsPerPage = 12;
   const [cartItems , setCartItems] = useState([])
@@ -24,13 +25,10 @@ const Card = () => {
     dispatch(addToCart(product))
   }
 
-  useEffect(()=>{
-    const productsService = new ProductService()
-
-    productsService.getProducts().then(response=> setProducts(response.data))
-
-    
-  },[])
+  
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   useEffect(()=>{
     const storedCartItems =JSON.parse(localStorage.getItem('cart')) || []

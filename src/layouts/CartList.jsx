@@ -3,9 +3,10 @@ import '../style/CartList.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart, deleteToCart } from '../store/actions/cartActions'
 import ProductService from '../services/productService'
+import { fetchProducts } from '../store/thunk'
 
 const CartList = () => {
-  const [products,setProducts] = useState([])
+  const { products, loading, error } = useSelector((state) => state.product);
   const [cart, setCart] = useState([])
 
   const dispatch = useDispatch()
@@ -26,12 +27,9 @@ const CartList = () => {
 
   }
 
-
-  useEffect(()=>{
-    const productsService = new ProductService()
-
-    productsService.getProducts().then(response=> setProducts(response.data))
-  },[])
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   console.log("deneme:", storedCartItems)
 

@@ -1,28 +1,22 @@
-export const ADD_PRODUCT = "ADD_PRODUCT"
-export const DELETE_PRODUCT = "DELETE_PRODUCT"
-export const CHANGE_DATA = "CHANGE_DATA"
+export const FETCH_PRODUCTS_REQUEST = "FETCH_PRODUCTS_REQUEST"
+export const FETCH_PRODUCTS_SUCCESS = "FETCH_PRODUCTS_SUCCESS"
+export const FETCH_PRODUCTS_FAILURE = "FETCH_PRODUCTS_FAILURE"
 
 
-export function addProduct(product){
-    return {
-        type: ADD_PRODUCT,
-        payload: product
-    }
+export const fetchProductsRequest = () => ({
+ 
+        type: FETCH_PRODUCTS_REQUEST
     
-}
+})
 
-export function deleteProduct(product) {
-    return {
-        type: DELETE_PRODUCT,
+export const fetchProductsSuccess=(product)=> ({
+
+        type: FETCH_PRODUCTS_SUCCESS,
         payload: product
-    }
+})
 
-}
+export const fetchProductsFailure=(product)=> ({
 
-export function changeData(product){
-    return {
-        type: CHANGE_DATA,
-        payload: product
-    }
-    
-}
+        type: FETCH_PRODUCTS_FAILURE,
+        payload: product  
+})
