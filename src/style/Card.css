@@ -72,3 +72,13 @@
   margin-top: 15px;
   margin-bottom: 125px;
 }
+
+@media (max-width: 950px) {
+  .card {
+    flex-basis: 10%; 
+  }
+  .card-image{
+    width: 140px;
+    height: 140px;
+  }
+}

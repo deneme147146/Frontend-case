@@ -6,8 +6,10 @@ import ProductService from '../services/productService'
 
 const CartList = () => {
   const [products,setProducts] = useState([])
+  const [cart, setCart] = useState([])
 
   const dispatch = useDispatch()
+  const storedCartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
   const {cartItems} = useSelector(state=> state.cart)
 
@@ -15,10 +17,13 @@ const CartList = () => {
 
     dispatch(addToCart(product))
 
+
   }
 
   const handleDeleteToCart= (product) =>{
       dispatch(deleteToCart(product))
+
+
   }
 
 
@@ -27,6 +32,9 @@ const CartList = () => {
 
     productsService.getProducts().then(response=> setProducts(response.data))
   },[])
+
+  console.log("deneme:", storedCartItems)
+
 
 
   return (

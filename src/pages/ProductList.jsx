@@ -1,6 +1,7 @@
-import React from 'react'
+
 import '../style/ProductList.css'
 import Card from './Card'
+
 
 const ProductList = () => {
   return (
