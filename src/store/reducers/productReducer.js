@@ -1,5 +1,5 @@
 /* eslint-disable no-duplicate-case */
-import { FETCH_PRODUCTS_FAILURE , FETCH_PRODUCTS_REQUEST , FETCH_PRODUCTS_SUCCESS , SEARCH_CARD_LIST,
+import { FETCH_PRODUCTS_FAILURE , FETCH_PRODUCTS_REQUEST , FETCH_PRODUCTS_SUCCESS , SEARCH_CARD_LIST, BRANDS_LIST ,
   SORT_BY_OLD_TO_NEW , SORT_BY_NEW_TO_OLD , SORT_BY_HIGH_TO_LOW , SORT_BY_LOW_TO_HIGH} from "../actions/productActions";
 import { products } from "../initialValues/productItems";
 
@@ -60,6 +60,15 @@ export default function productReducer(state = initialState, action) {
               ...state,
               products: sortedProductsNewToHigh,
             };  
+
+            case BRANDS_LIST:
+              
+            
+              return {
+                ...state,
+                products: products,
+              };
+  
 
            case SEARCH_CARD_LIST:
             

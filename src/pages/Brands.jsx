@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import '../style/Brands.css'
 import ProductService from '../services/productService'
+import { useDispatch } from 'react-redux';
+import { brandsList } from '../store/actions/productActions';
 
 const Brands = () => {
+
+
+  const dispatch = useDispatch();
+
+
   const [products,setProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
@@ -24,6 +31,12 @@ const Brands = () => {
 
       setFilteredProducts(filtered)
   }
+
+  const handleBrands = ()=> {
+
+
+    dispatch(brandsList(products.brand))
+  }
   
   return (
     <div className='all-brands'>
@@ -38,7 +51,7 @@ const Brands = () => {
         {
           filteredProducts.map(product=> (
             <><div key={product.id}>
-              <input type="checkbox" id={product.brand} name="brands" value={product.brand} />
+              <input type="checkbox"  id={product.brand} name="brands" value={product.brand} onChange={handleBrands} />
               <label htmlFor={product.brand}>{product.brand}</label>
             </div><br /></>
           ))
