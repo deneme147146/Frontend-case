@@ -7,6 +7,7 @@ export const addLocalStorage = (data) => {
     if (existingData) {
       updatedData = JSON.parse(existingData);
     }
+    
   
     updatedData.push(data);
     localStorage.setItem('cart', JSON.stringify(updatedData));
@@ -35,7 +36,7 @@ export const removeFromLocalStorage= (data) => {
     }
 }
 
-export const getFromLocalStorage = () => {
+export const getFromLocalStorage = async () => {
     const data = localStorage.getItem('cart');
     return data ? JSON.parse(data) : null;
   };

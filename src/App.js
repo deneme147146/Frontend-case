@@ -7,6 +7,7 @@ import RightColumn from './layouts/RightColumn';
 import Filter from './pages/Filter';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDetailProduct, fetchProducts } from './store/thunk';
+import { getFromLocalStorage } from './layouts/LocalStorageHelper';
 
 function App() {
 
@@ -20,7 +21,9 @@ function App() {
  
 
 
+const data = getFromLocalStorage()
 
+console.log("deneme",data)
 
 
   return (

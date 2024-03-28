@@ -1,5 +1,4 @@
-
-
-export let cartItems = []
-
-
+ 
+ 
+ 
+ export const cartItems = []

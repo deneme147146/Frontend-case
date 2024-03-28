@@ -1,7 +1,12 @@
 import { ADD_TO_CART, DELETE_TO_CART } from "../actions/cartActions";
 import { cartItems } from "../initialValues/cartItems";
 
+
+
+const savedCartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
 const initialState = {
+  //cartItems: savedCartItems,
   cartItems: cartItems,
 };
 

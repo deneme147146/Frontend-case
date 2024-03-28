@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../style/CartList.css'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart, deleteToCart } from '../store/actions/cartActions'
 import ProductService from '../services/productService'
@@ -24,6 +25,8 @@ const CartList = () => {
     addLocalStorage(product)
   }
 
+
+
  
  
   const handleDeleteToCart= (product) =>{
@@ -37,7 +40,7 @@ const CartList = () => {
   }, [dispatch]);
 
  
-
+console.log("cartitems",cartItems)
 
 
 
