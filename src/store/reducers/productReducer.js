@@ -1,5 +1,5 @@
 /* eslint-disable no-duplicate-case */
-import { FETCH_PRODUCTS_FAILURE , FETCH_PRODUCTS_REQUEST , FETCH_PRODUCTS_SUCCESS , 
+import { FETCH_PRODUCTS_FAILURE , FETCH_PRODUCTS_REQUEST , FETCH_PRODUCTS_SUCCESS , SEARCH_CARD_LIST,
   SORT_BY_OLD_TO_NEW , SORT_BY_NEW_TO_OLD , SORT_BY_HIGH_TO_LOW , SORT_BY_LOW_TO_HIGH} from "../actions/productActions";
 import { products } from "../initialValues/productItems";
 
@@ -48,17 +48,24 @@ export default function productReducer(state = initialState, action) {
               };  
 
               case SORT_BY_OLD_TO_NEW:
-            const sortedProductsOldToNew = [...state.products].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            const sortedProductsOldToNew = [...state.products].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
             return {
               ...state,
               products: sortedProductsOldToNew,
             };  
 
           case SORT_BY_NEW_TO_OLD:
-            const sortedProductsNewToHigh = [...state.products].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+            const sortedProductsNewToHigh = [...state.products].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
             return {
               ...state,
               products: sortedProductsNewToHigh,
+            };  
+
+           case SEARCH_CARD_LIST:
+            
+            return {
+              ...state,
+              products: action.payload
             };  
 
     default:

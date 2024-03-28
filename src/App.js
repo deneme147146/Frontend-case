@@ -7,7 +7,7 @@ import RightColumn from './layouts/RightColumn';
 import Filter from './pages/Filter';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDetailProduct, fetchProducts } from './store/thunk';
-import { getFromLocalStorage } from './layouts/LocalStorageHelper';
+import { getFromLocalStorage } from './helper/LocalStorageHelper';
 
 function App() {
 

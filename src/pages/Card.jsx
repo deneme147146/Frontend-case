@@ -6,7 +6,7 @@ import { addToCart } from '../store/actions/cartActions'
 import { cartItems } from '../store/initialValues/cartItems'
 import { Link } from 'react-router-dom'
 import { fetchProducts } from '../store/thunk'
-import { addLocalStorage } from '../layouts/LocalStorageHelper'
+import { addLocalStorage } from '../helper/LocalStorageHelper'
 
 const Card = () => {
 

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addToCart, deleteToCart } from '../store/actions/cartActions'
 import ProductService from '../services/productService'
 import { fetchProducts } from '../store/thunk'
-import { addLocalStorage, getFromLocalStorage, removeFromLocalStorage } from './LocalStorageHelper'
+import { addLocalStorage, getFromLocalStorage, removeFromLocalStorage } from '../helper/LocalStorageHelper'
 
 const CartList = () => {
   const { products, loading, error } = useSelector((state) => state.product);

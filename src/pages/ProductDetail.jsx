@@ -4,7 +4,7 @@ import ProductService from '../services/productService';
 import "../style/ProductDetail.css"
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/actions/cartActions';
-import { addLocalStorage } from '../layouts/LocalStorageHelper';
+import { addLocalStorage } from '../helper/LocalStorageHelper';
 
 const ProductDetail = () => {
     let {id} = useParams()

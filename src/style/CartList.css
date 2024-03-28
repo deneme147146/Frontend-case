@@ -23,7 +23,7 @@
     
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-size: 15px;
+    font-size: 13px;
     width: 10px;
     overflow: hidden !important;
   }
@@ -31,7 +31,7 @@
   .cart-value-btn{
     background-color:#4753fc ;
     color: white;
-    font-size: 16px;
+    font-size: 15px;
   }
   .btnn{
     width: 25px;
