@@ -1,10 +1,11 @@
 /* eslint-disable no-duplicate-case */
 import { FETCH_PRODUCTS_FAILURE , FETCH_PRODUCTS_REQUEST , FETCH_PRODUCTS_SUCCESS , SEARCH_CARD_LIST, BRANDS_LIST ,
-  SORT_BY_OLD_TO_NEW , SORT_BY_NEW_TO_OLD , SORT_BY_HIGH_TO_LOW , SORT_BY_LOW_TO_HIGH} from "../actions/productActions";
+  SORT_BY_OLD_TO_NEW , SORT_BY_NEW_TO_OLD , SORT_BY_HIGH_TO_LOW , SORT_BY_LOW_TO_HIGH, ORIGIN_PRODUCTS} from "../actions/productActions";
 import { products } from "../initialValues/productItems";
 
 const initialState = {
   products: [],
+  originProducts: [],
   loading: false,
   error: null
 };
@@ -12,6 +13,13 @@ const initialState = {
 export default function productReducer(state = initialState, action) {
   // eslint-disable-next-line default-case
   switch (action.type) {
+    case ORIGIN_PRODUCTS:
+      return {
+        ...state,
+        loading:false,
+        originProducts:action.payload
+      };
+
     case FETCH_PRODUCTS_REQUEST:
       return {
         ...state,

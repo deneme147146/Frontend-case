@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { fetchProductsFailure, fetchProductsSuccess, fetchProductsRequest } from "./actions/productActions";
+import { fetchProductsFailure, fetchProductsSuccess, fetchProductsRequest, originProducts } from "./actions/productActions";
 import ProductService from "../services/productService";
 
 
@@ -13,6 +13,7 @@ export const fetchProducts = () => async (dispatch) =>{
 
     try {
         const response = await productService.getProducts();
+        dispatch(originProducts(response.data))
         dispatch(fetchProductsSuccess(response.data))
     } catch (error) {
 

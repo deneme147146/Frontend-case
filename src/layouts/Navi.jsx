@@ -11,15 +11,14 @@ const Navi = () => {
   const dispatch = useDispatch();
 
   const { products, loading, error } = useSelector((state) => state.product);
+  const { originProducts, originLoading, originError} = useSelector((state) => state.product);
   const [filteredProducts, setFilteredProducts] = useState([])
 
 
-  
-
   const handleSearch =(e) =>{
     const searchTerm = e.target.value.toLowerCase();
-
-    const filtered = products.filter(product=> 
+    console.log("PRODUCTS",originProducts.length)
+    const filtered = originProducts.filter(product=> 
       product.name.toLowerCase().includes(searchTerm))
 
       setFilteredProducts(filtered)
