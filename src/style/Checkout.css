@@ -1,6 +1,6 @@
 .checkout-container {
     display: flex;
-    gap: 10px;
+    gap: 0.625rem;
     
   }
   
@@ -8,7 +8,7 @@
 
    
     align-items: center;
-    padding: 10px 10px 10px 10px;
+    padding: 0.625rem;
     
   
     background-color: #ffffff; /* Beyaz renk */
@@ -23,8 +23,8 @@
   .btn-check{
     color: white;
     border-radius: 5px;
-    width: 215px;
-    height: 35px;
+    width: 13.438rem;
+    height: 2.188rem;
     background-color: #4753fc;
   }
 

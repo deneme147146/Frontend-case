@@ -1,6 +1,6 @@
 .cart-container {
     display: flex;
-    gap: 10px;
+    gap: 0.625rem;
     
     
   }
@@ -9,22 +9,22 @@
     flex-basis: 100%;
    
     align-items: center;
-    padding: 10px 10px 10px 10px;
+    padding: 0.625rem;
     
   
     background-color: #ffffff; /* Beyaz renk */
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* Gölgelik */
-    margin-bottom: 30px;
-    margin-top: 40px;
+    margin-bottom: 1.875rem;
+    margin-top: 2.5rem;
   }
 
   .marka-name{
-    padding-right: 30px;
+    padding-right: 1.875rem;
     
     white-space: nowrap;
     text-overflow: ellipsis;
     font-size: 13px;
-    width: 10px;
+    width: 0.625rem;
     overflow: hidden !important;
   }
 
@@ -34,8 +34,8 @@
     font-size: 15px;
   }
   .btnn{
-    width: 25px;
-    height: 25px;
+    width: 1.563rem;
+    height: 1.563rem;
     float: right;
   }
 
