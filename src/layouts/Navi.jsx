@@ -16,7 +16,7 @@ const Navi = () => {
 
 
   const handleSearch =(e) =>{
-    const searchTerm = e.target.value.toLowerCase();
+    const searchTerm = e.target.value.trim().toLowerCase();
     console.log("PRODUCTS",originProducts.length)
     const filtered = originProducts.filter(product=> 
       product.name.toLowerCase().includes(searchTerm))
