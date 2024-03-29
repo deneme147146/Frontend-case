@@ -23,7 +23,7 @@ function App() {
 
 const data = getFromLocalStorage()
 
-console.log("deneme",data)
+
 
 
   return (

@@ -58,9 +58,10 @@ export const sortByLowToHigh=()=> ({
        
 })
 
-export const brandsList=()=> ({
+export const brandsList=(product)=> ({
 
         type: BRANDS_LIST,
+        payload: product
        
 })
 

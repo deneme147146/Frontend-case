@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../style/Brands.css'
 import ProductService from '../services/productService'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { brandsList } from '../store/actions/productActions';
 
 const Brands = () => {
@@ -32,11 +32,13 @@ const Brands = () => {
       setFilteredProducts(filtered)
   }
 
-  const handleBrands = ()=> {
-
-
-    dispatch(brandsList(products.brand))
-  }
+  // const handleBrands = (selectedBrand)=> {
+  //   const filtered = brandsProducts.filter(product=> 
+  //     product.brand.includes(selectedBrand))
+    
+  //   dispatch(brandsList(filtered))
+  //  onChange={() => handleBrands(product.brand)}
+  // }
   
   return (
     <div className='all-brands'>
@@ -51,7 +53,7 @@ const Brands = () => {
         {
           filteredProducts.map(product=> (
             <><div key={product.id}>
-              <input type="checkbox"  id={product.brand} name="brands" value={product.brand} onChange={handleBrands} />
+              <input type="checkbox"  id={product.brand} name="brands" value={product.brand}    />
               <label htmlFor={product.brand}>{product.brand}</label>
             </div><br /></>
           ))

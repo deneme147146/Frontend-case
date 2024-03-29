@@ -35,7 +35,10 @@ const Card = () => {
     console.log("card localstroage", cartItems)
     
   },[])
-  console.log("deneme", cartItems)
+
+  
+
+
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);

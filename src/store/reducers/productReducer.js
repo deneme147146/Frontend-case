@@ -7,6 +7,7 @@ const initialState = {
   products: [],
   originProducts: [],
   loading: false,
+
   error: null
 };
 
@@ -69,14 +70,7 @@ export default function productReducer(state = initialState, action) {
               products: sortedProductsNewToHigh,
             };  
 
-            case BRANDS_LIST:
-              
-            
-              return {
-                ...state,
-                products: products,
-              };
-  
+          
 
            case SEARCH_CARD_LIST:
             

@@ -42,6 +42,9 @@ const CartList = () => {
  
 console.log("cartitems",cartItems)
 
+const data = getFromLocalStorage()
+
+console.log("localstorage" , data)
 
 
   return (
