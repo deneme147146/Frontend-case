@@ -9,9 +9,10 @@ import { addLocalStorage, getFromLocalStorage, removeFromLocalStorage } from '..
 
 const CartList = () => {
   const { products, loading, error } = useSelector((state) => state.product);
-  const cartItemsFromLocalStorage = getFromLocalStorage();
 
+  const [productLocalStorage,setProductLocalStorage] = useState() //değiş
 
+  const [isLocalStorageLoaded, setIsLocalStorageLoaded] = useState(false);
   const dispatch = useDispatch()
 
 
@@ -22,8 +23,19 @@ const CartList = () => {
   
 
     dispatch(addToCart(product))
-    addLocalStorage(product)
+    //addLocalStorage(product)
   }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getFromLocalStorage();
+      console.log("DATA",data)
+      setProductLocalStorage(data);
+    
+    };
+    fetchData();
+  }, []);
+
 
 
 
@@ -44,24 +56,28 @@ console.log("cartitems",cartItems)
 
 const data = getFromLocalStorage()
 
-console.log("localstorage" , data)
+console.log("productLocalStorage" , productLocalStorage)
+
+
 
 
   return (
     <div>
       <div className='cart-container'>
         <div className='cartlist-card'>
+          
 
           {
-            cartItems.map((cartItem) => 
-            
-            <><div key={cartItem.product.id}>
-                <p className='marka-name' style={{ display: 'inline' }}>{cartItem.product.name}</p>
-                <button onClick={() => handleAddToCart(cartItem.product)} className='btnn'>+</button>
-                <button className='cart-value-btn , btnn'>{cartItem.quantity}</button>
-                <button onClick={() => handleDeleteToCart(cartItem.product)} className='btnn'>-</button>
+            // varsa döndür yoksa hata verme demek
+      productLocalStorage && productLocalStorage.map((cartItem) => 
+       //cartItems.map((cartItem) => 
+            <><div key={cartItem?.product?.id}>
+                <p className='marka-name' style={{ display: 'inline' }}>{cartItem?.product?.name}</p>
+                <button onClick={() => handleAddToCart(cartItem?.product)} className='btnn'>+</button>
+                <button className='cart-value-btn , btnn'>{cartItem?.quantity}</button>
+                <button onClick={() => handleDeleteToCart(cartItem?.product)} className='btnn'>-</button>
               </div><div>
-                  <p className='price'>{cartItem.product.price * cartItem.quantity} ₺</p>
+                  <p className='price'>{cartItem?.product?.price * cartItem?.quantity} ₺</p>
                 </div></>
             
             )

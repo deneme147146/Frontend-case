@@ -33,6 +33,12 @@
 
 }
 
+@media screen and (max-width: 768px) {
+  /* Tablet ve mobil cihazlar için media query */
+  .header {
+      grid-template-columns: 1fr; /* Tek sütunlu hale getirin */
+  }
+}
 .App{
   height: 100%;
   width: 100%;

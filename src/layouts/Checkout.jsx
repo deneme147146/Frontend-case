@@ -1,11 +1,12 @@
 import React from 'react'
 import '../style/Checkout.css'
-import { useDispatch, useSelector } from 'react-redux'
+
 import { toast } from 'react-toastify'
+import { useSelector } from 'react-redux'
 
 const Checkout = () => {
 
-  const dispatch = useDispatch()
+
   const {cartItems} = useSelector(state=> state.cart)
 
   const calculateTotalPrice = () => {

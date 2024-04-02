@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ProductService from '../services/productService';
 import "../style/ProductDetail.css"
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../store/actions/cartActions';
 import { addLocalStorage } from '../helper/LocalStorageHelper';
+import { Commet } from 'react-loading-indicators';
 
 const ProductDetail = () => {
     let {id} = useParams()
@@ -13,7 +14,7 @@ const ProductDetail = () => {
 
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true); 
-
+    const { products, error } = useSelector((state) => state.product);
 
     useEffect(()=>{
 
@@ -27,7 +28,7 @@ const ProductDetail = () => {
   },[id])
 
   if (loading) {
-    return <div>loading..</div>;
+    return <div>loading.. <Commet color="#4753fc" size="medium" text="" textColor="" /></div>;
    }else if(!product){
     return <div style={{textAlign:'center', justifyContent:'center', color:'blue'}}>Ürün yükleniyor...</div>;
    }
@@ -61,12 +62,5 @@ const ProductDetail = () => {
   )
 }
 
-/*
-  .card-price{
-    color: #4753fc;
-    font-weight: 400;
-    margin-top: 5px;
-  }
-*/ 
 
 export default ProductDetail

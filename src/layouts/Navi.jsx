@@ -5,12 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { searchCardList } from '../store/actions/productActions';
 
 
+
 const Navi = () => {
 
 
   const dispatch = useDispatch();
 
-  const { products, loading, error } = useSelector((state) => state.product);
   const { originProducts, originLoading, originError} = useSelector((state) => state.product);
   const [filteredProducts, setFilteredProducts] = useState([])
 
@@ -38,6 +38,8 @@ const Navi = () => {
 
   return (
 
+    
+      
     <div className='header'>
         <div className='header-left'>
         <h2>Eteration</h2>
@@ -59,7 +61,6 @@ const Navi = () => {
         </div>
 
     </div>
-
 
 
   )
