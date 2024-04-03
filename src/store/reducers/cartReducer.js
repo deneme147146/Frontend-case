@@ -7,15 +7,15 @@ import { cartItems } from "../initialValues/cartItems";
 const savedCartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
 const initialState = {
-  //cartItems: savedCartItems,
+ 
   cartItems: cartItems,
 };
 
 export default function cartReducer(state = initialState, { type, payload }) {
-  // eslint-disable-next-line default-case
+  
   switch (type) {
     case ADD_TO_CART:
-    
+      addLocalStorage(payload)
       console.log(state.cartItems)
 
       let product = state.cartItems.find((c) => c.product.id === payload.id);
@@ -23,8 +23,7 @@ export default function cartReducer(state = initialState, { type, payload }) {
       if (product) {
         product.quantity++;
 
-        //localstorage
-       // 
+       
         console.log("DÖN",state.cartItms)
         return {
           ...state,
@@ -32,7 +31,7 @@ export default function cartReducer(state = initialState, { type, payload }) {
         };
       } else {
         let updatedCartItems = [...state.cartItems, { quantity: 1, product: payload }];
-        //addLocalStorage(updatedCartItems)
+    
         
         return {
           ...state,
