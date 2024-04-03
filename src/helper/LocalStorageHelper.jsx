@@ -6,8 +6,9 @@
  * İçeride ilgili kart varsa quantity artır
  * İçeride ilgili kart yoksa ilgili kartı ekle.
  */
+const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 export const addLocalStorage = (data) => {
-  const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+  
 
   // Ürünün sepette olup olmadığını kontrol et
   const existingItemIndex = cartItems.findIndex(
@@ -23,6 +24,7 @@ export const addLocalStorage = (data) => {
   }
   // Güncellenmiş sepet ürünlerini tekrar local storage'a kaydet
   localStorage.setItem("cart", JSON.stringify(cartItems));
+
 };
 
 /**
@@ -35,7 +37,7 @@ export const addLocalStorage = (data) => {
  * İçeride ilgili kart yoksa bir şey yapma
  */
 export const removeFromLocalStorage = (data) => {
-  const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+  
 
   // Ürünün sepette olup olmadığını kontrol et
   const existingItemIndex = cartItems.findIndex(
@@ -66,3 +68,9 @@ export const getFromLocalStorage = async () => {
   const data = await localStorage.getItem("cart");
   return data ? JSON.parse(data) : null;
 };
+
+export const getTotalPrice = () => {
+  return cartItems.reduce((totalPrice, cartItem) => {
+    return totalPrice + cartItem.product.price * cartItem.quantity;
+  },0);
+}

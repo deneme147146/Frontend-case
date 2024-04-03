@@ -5,26 +5,37 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addToCart, deleteToCart } from '../store/actions/cartActions'
 import ProductService from '../services/productService'
 import { fetchProducts } from '../store/thunk'
-import { addLocalStorage, getFromLocalStorage, removeFromLocalStorage } from '../helper/LocalStorageHelper'
+import { addLocalStorage, getFromLocalStorage, getTotalPrice, removeFromLocalStorage } from '../helper/LocalStorageHelper'
+import { localProduct } from '../store/actions/localActions'
 
 const CartList = () => {
   const { products, loading, error } = useSelector((state) => state.product);
 
+ 
   const [productLocalStorage,setProductLocalStorage] = useState() //değiş
+  const [priceLocalStorage,setPriceLocalStorage] = useState() //değiş
 
   const [isLocalStorageLoaded, setIsLocalStorageLoaded] = useState(false);
   const dispatch = useDispatch()
+
+  // const total = getTotalPrice();
+
+
+  // console.log("toplam fiat", total)
+
 
 
   const {cartItems} = useSelector(state=> state.cart)
 
   const handleAddToCart = (product) =>{
 
-  
-
+    //dispatch(localProduct(product))
     dispatch(addToCart(product))
-    //addLocalStorage(product)
+    addLocalStorage(product)
   }
+
+
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +46,8 @@ const CartList = () => {
     };
     fetchData();
   }, []);
+
+
 
 
 

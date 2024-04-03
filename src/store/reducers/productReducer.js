@@ -6,6 +6,7 @@ import { products } from "../initialValues/productItems";
 const initialState = {
   products: [],
   originProducts: [],
+
   loading: false,
 
   error: null

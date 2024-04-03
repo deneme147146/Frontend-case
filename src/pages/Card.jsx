@@ -17,13 +17,14 @@ const Card = () => {
   const productsPerPage = 12;
   const [cartItems , setCartItems] = useState([])
 
+
   const handleAddToCart= (product) => {
 
    // addLocalStorage(product)
     dispatch(addToCart(product))
   }
 
-  
+
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
