@@ -12,6 +12,7 @@ const Navi = () => {
   const dispatch = useDispatch();
 
   const { originProducts, originLoading, originError} = useSelector((state) => state.product);
+
   const [filteredProducts, setFilteredProducts] = useState([])
 
 
@@ -24,7 +25,7 @@ const Navi = () => {
       setFilteredProducts(filtered)
 
       dispatch(searchCardList(filtered));
-
+   
   }
 
   // ARAMA CUBUGUNDA HATA VAR SİLDİĞİNDE PRODUCTS GĞNCELLENMİYOR 
@@ -33,6 +34,8 @@ const Navi = () => {
   useEffect(()=> {
         
   },[filteredProducts])
+
+
 
 
 

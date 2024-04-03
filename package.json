@@ -54,5 +54,17 @@
     "@types/jest": "^29.5.12",
     "babel-jest": "^29.7.0",
     "jest": "^27.5.1"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "^axios$": "<rootDir>/node_modules/axios"
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(axios)/)",
+      "\\.css$"
+    ]
   }
 }

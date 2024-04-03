@@ -6,22 +6,22 @@ import { addToCart, deleteToCart } from '../store/actions/cartActions'
 import ProductService from '../services/productService'
 import { fetchProducts } from '../store/thunk'
 import { addLocalStorage, getFromLocalStorage, getTotalPrice, removeFromLocalStorage } from '../helper/LocalStorageHelper'
-import { localProduct } from '../store/actions/localActions'
+import { localProducts } from '../store/actions/localActions'
 
 const CartList = () => {
   const { products, loading, error } = useSelector((state) => state.product);
 
- 
+ const { localProduct} = useSelector((state) => state.local);
   const [productLocalStorage,setProductLocalStorage] = useState() //değiş
   const [priceLocalStorage,setPriceLocalStorage] = useState() //değiş
 
   const [isLocalStorageLoaded, setIsLocalStorageLoaded] = useState(false);
   const dispatch = useDispatch()
 
-  // const total = getTotalPrice();
+  const total = getTotalPrice();
 
 
-  // console.log("toplam fiat", total)
+  console.log("toplam fiat", total)
 
 
 
@@ -32,6 +32,7 @@ const CartList = () => {
     //dispatch(localProduct(product))
     dispatch(addToCart(product))
     addLocalStorage(product)
+    dispatch(localProducts(product))
   }
 
 
@@ -82,8 +83,8 @@ console.log("productLocalStorage" , productLocalStorage)
 
           {
             // varsa döndür yoksa hata verme demek
-      productLocalStorage && productLocalStorage.map((cartItem) => 
-       //cartItems.map((cartItem) => 
+     // productLocalStorage && productLocalStorage.map((cartItem) => 
+       localProduct.map((cartItem) => 
             <><div key={cartItem?.product?.id}>
                 <p className='marka-name' style={{ display: 'inline' }}>{cartItem?.product?.name}</p>
                 <button onClick={() => handleAddToCart(cartItem?.product)} className='btnn'>+</button>

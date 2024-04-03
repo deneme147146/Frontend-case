@@ -7,6 +7,7 @@ import { cartItems } from '../store/initialValues/cartItems'
 import { Link } from 'react-router-dom'
 import { fetchProducts } from '../store/thunk'
 import { addLocalStorage } from '../helper/LocalStorageHelper'
+import { localProducts } from '../store/actions/localActions'
 
 const Card = () => {
 
@@ -16,12 +17,13 @@ const Card = () => {
   const [currentPage, setCurrentPage] =useState(1)
   const productsPerPage = 12;
   const [cartItems , setCartItems] = useState([])
-
+  const { localProduct} = useSelector((state) => state.local);
 
   const handleAddToCart= (product) => {
 
    // addLocalStorage(product)
     dispatch(addToCart(product))
+    dispatch(localProducts(product))
   }
 
 
