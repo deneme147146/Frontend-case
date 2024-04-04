@@ -6,7 +6,8 @@ import { addToCart, deleteToCart } from '../store/actions/cartActions'
 import ProductService from '../services/productService'
 import { fetchProducts } from '../store/thunk'
 import { addLocalStorage, getFromLocalStorage, getTotalPrice, removeFromLocalStorage } from '../helper/LocalStorageHelper'
-import { localProducts } from '../store/actions/localActions'
+import { localProducts , localProductsDelete } from '../store/actions/localActions'
+
 
 const CartList = () => {
   const { products, loading, error } = useSelector((state) => state.product);
@@ -32,7 +33,7 @@ const CartList = () => {
     //dispatch(localProduct(product))
     dispatch(addToCart(product))
     addLocalStorage(product)
-    dispatch(localProducts(product))
+    //dispatch(localProducts(product))
   }
 
 
@@ -58,7 +59,8 @@ const CartList = () => {
   const handleDeleteToCart= (product) =>{
       dispatch(deleteToCart(product))
       removeFromLocalStorage(product)
-
+     //dispatch(localProductsDelete(product))
+      
   }
 
   useEffect(() => {

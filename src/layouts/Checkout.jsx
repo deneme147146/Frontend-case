@@ -11,6 +11,7 @@ const Checkout = () => {
   const {cartItems} = useSelector(state=> state.cart)
 
   const [productLocalStorage,setProductLocalStorage] = useState() //değiş
+  
   const total = getTotalPrice();
 
 

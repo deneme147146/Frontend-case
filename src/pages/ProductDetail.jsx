@@ -35,13 +35,13 @@ const ProductDetail = () => {
   if (loading) {
     return <div>loading..<CircularProgress disableShrink /></div>;
    }else if(!product){
-    return <div style={{textAlign:'center', justifyContent:'center', color:'blue'}}>Ürün yükleniyor...<CircularProgress disableShrink /> <LinearProgress /></div>;
+    return <div style={{textAlign:'center', justifyContent:'center', color:'blue'}}><CircularProgress disableShrink /> <LinearProgress /></div>;
    }
 
    const handleAddToCart =(product) =>{
    
     addLocalStorage(product)
-    dispatch(addToCart(product))
+    //dispatch(addToCart(product))
    }
 
 
