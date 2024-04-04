@@ -4,8 +4,10 @@ import ProductService from '../services/productService';
 import "../style/ProductDetail.css"
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../store/actions/cartActions';
+
 import { addLocalStorage } from '../helper/LocalStorageHelper';
 import { Commet } from 'react-loading-indicators';
+import { CircularProgress, LinearProgress } from '@mui/material';
 
 const ProductDetail = () => {
     let {id} = useParams()
@@ -15,6 +17,9 @@ const ProductDetail = () => {
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true); 
     const { products, error } = useSelector((state) => state.product);
+
+
+
 
     useEffect(()=>{
 
@@ -28,9 +33,9 @@ const ProductDetail = () => {
   },[id])
 
   if (loading) {
-    return <div>loading.. <Commet color="#4753fc" size="medium" text="" textColor="" /></div>;
+    return <div>loading..<CircularProgress disableShrink /></div>;
    }else if(!product){
-    return <div style={{textAlign:'center', justifyContent:'center', color:'blue'}}>Ürün yükleniyor...</div>;
+    return <div style={{textAlign:'center', justifyContent:'center', color:'blue'}}>Ürün yükleniyor...<CircularProgress disableShrink /> <LinearProgress /></div>;
    }
 
    const handleAddToCart =(product) =>{

@@ -2,8 +2,10 @@
   "name": "react-case",
   "version": "0.1.0",
   "private": true,
-  
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.14",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
@@ -46,8 +48,8 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.24.3",
-    "@babel/preset-env": "^7.24.3",
+    "@babel/core": "^7.24.4",
+    "@babel/preset-env": "^7.24.4",
     "@babel/preset-react": "^7.24.1",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.2",
@@ -57,14 +59,7 @@
   },
   "jest": {
     "transform": {
-      "^.+\\.jsx?$": "babel-jest"
-    },
-    "moduleNameMapper": {
-      "^axios$": "<rootDir>/node_modules/axios"
-    },
-    "transformIgnorePatterns": [
-      "/node_modules/(?!(axios)/)",
-      "\\.css$"
-    ]
+      "\\.js$": "<rootDir>/node_modules/babel-jest"
+    }
   }
 }
