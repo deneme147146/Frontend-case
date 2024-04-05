@@ -44,9 +44,11 @@ const ProductDetail = () => {
     //dispatch(addToCart(product))
    }
 
+   
+
 
   return (
-    <div className='detail-container'>
+    <div data-testid="product-detail" className='detail-container'>
 
       <div className='detail-card'>
         <div className='left'>

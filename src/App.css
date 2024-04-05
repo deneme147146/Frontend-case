@@ -17,26 +17,20 @@
 }
 
 .header-center{
-  /* width: 50%;
-  height: 85%;
-  align-items: center;
-  display: flex; */
+  
   grid-column: span 6
 }
 
 .header-right{
-  /* width: 25%;
-  text-align: center;
-
-  padding: 130; */
+  
   grid-column: span 3
 
 }
 
 @media screen and (max-width: 768px) {
-  /* Tablet ve mobil cihazlar için media query */
+ 
   .header {
-      grid-template-columns: 1fr; /* Tek sütunlu hale getirin */
+      grid-template-columns: 1fr; 
   }
 }
 .App{
@@ -50,8 +44,8 @@
 
 .anaiki{
   display: grid;
-  grid-template-columns: repeat(12, 1fr); /* 12 birimlik ızgara */
-  grid-gap: 10px; /* İzgara aralığı */
+  grid-template-columns: repeat(12, 1fr); 
+  grid-gap: 10px; 
 
 }
 

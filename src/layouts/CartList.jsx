@@ -33,7 +33,7 @@ const CartList = () => {
     //dispatch(localProduct(product))
     dispatch(addToCart(product))
     addLocalStorage(product)
-    //dispatch(localProducts(product))
+    dispatch(localProducts(product))
   }
 
 
@@ -50,11 +50,6 @@ const CartList = () => {
   }, []);
 
 
-
-
-
-
- 
  
   const handleDeleteToCart= (product) =>{
       dispatch(deleteToCart(product))

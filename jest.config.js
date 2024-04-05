@@ -1,12 +1,10 @@
 module.exports = {
-    transform: {
-      '^.+\\.jsx?$': 'babel-jest',
-    },
     moduleNameMapper: {
-      '^axios$': '<rootDir>/node_modules/axios',
+      '^.+\\.(css|less)$': '<rootDir>/config/CSSStub.js',
     },
-    transformIgnorePatterns: [
-      '/node_modules/(?!(axios)/)',
-      '\\.css$',
-    ],
+    transform: {
+          "^.+\\.jsx?$": "babel-jest"
+        },
+        setupFilesAfterEnv: ["<rootDir>/src/tests/setupTests.js"],
+        testEnvironment: 'jsdom',
   };
