@@ -21,6 +21,8 @@ export default function localReducer(state = initialState, action) {
               console.log("+ basınca ",cartItems.quantity)
             } else {
               cartItems.push({ product: action.payload, quantity: 1 });
+              return { ...state, localProduct:cartItems };
+              
             }
       
             localStorage.setItem("cart", JSON.stringify(cartItems)); // Update local storage
