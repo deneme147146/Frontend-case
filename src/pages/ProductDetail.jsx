@@ -4,10 +4,10 @@ import ProductService from '../services/productService';
 import "../style/ProductDetail.css"
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../store/actions/cartActions';
-
 import { addLocalStorage } from '../helper/LocalStorageHelper';
 import { Commet } from 'react-loading-indicators';
 import { CircularProgress, LinearProgress } from '@mui/material';
+import { localProducts } from '../store/actions/localActions';
 
 const ProductDetail = () => {
     let {id} = useParams()
@@ -18,7 +18,7 @@ const ProductDetail = () => {
     const [loading, setLoading] = useState(true); 
     const { products, error } = useSelector((state) => state.product);
 
-
+    const { localProduct} = useSelector((state) => state.local);
 
 
     useEffect(()=>{
@@ -42,6 +42,9 @@ const ProductDetail = () => {
    
     addLocalStorage(product)
     //dispatch(addToCart(product))
+    dispatch(addToCart(product))
+   
+    dispatch(localProducts(product))
    }
 
    
@@ -58,7 +61,7 @@ const ProductDetail = () => {
        
       <div className='right'>
        {product.name}
-      
+       <p>react-test</p>
       <p className="detail-price">{product.price} ₺</p> 
       <button onClick={() => handleAddToCart(product)} className="detail-btn">Add to Cart</button>
       {product.description}

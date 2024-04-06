@@ -73,4 +73,7 @@ export const getTotalPrice = () => {
   return cartItems.reduce((totalPrice, cartItem) => {
     return totalPrice + cartItem.product.price * cartItem.quantity;
   },0);
+
+
+
 }

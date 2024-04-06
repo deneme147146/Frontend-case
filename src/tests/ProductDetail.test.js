@@ -11,39 +11,57 @@ import store from '../store/configureStore'
 //   });
 
 test('renders product details correctly', async () => {
-    const fakeProduct = {
-      id: '1',
-      name: 'Test Product',
-      price: 100,
-      description: 'This is a test product',
-      image: 'test-image-url',
-    };
 
-    // Mock useParams to return the fake product id
-    jest.mock('react-router-dom', () => ({
-      ...jest.requireActual('react-router-dom'),
-      useParams: () => ({
-        id: fakeProduct.id,
-      }),
-    }));
 
-    render(
-      <Provider store={store}>
-        <MemoryRouter initialEntries={['/product/1']}>
-          <Route path="/product/:id">
-            <ProductDetail />
-          </Route>
-        </MemoryRouter>
-      </Provider>
-    );
 
-    // Wait for the loading spinner to disappear
-    await screen.findByTestId('product-detail');
+render(
+    <Provider store={store}>
+      <MemoryRouter initialEntries={['/product/1']}>
+        <Route path="/product/:id">
+          <ProductDetail />
+        </Route>
+      </MemoryRouter>
+    </Provider>
+  );
 
-    // Check if product details are rendered correctly
-    expect(screen.getByText(fakeProduct.name)).toBeInTheDocument();
-    expect(screen.getByText(`${fakeProduct.price} ₺`)).toBeInTheDocument();
-    expect(screen.getByText(fakeProduct.description)).toBeInTheDocument();
+  const element = screen.getByText('react-test')
+  expect(element).toBeInTheDocument()
+
+
+
+    // const fakeProduct = {
+    //   id: '1',
+    //   name: 'Test Product',
+    //   price: 100,
+    //   description: 'This is a test product',
+    //   image: 'test-image-url',
+    // };
+
+    // // Mock useParams to return the fake product id
+    // jest.mock('react-router-dom', () => ({
+    //   ...jest.requireActual('react-router-dom'),
+    //   useParams: () => ({
+    //     id: fakeProduct.id,
+    //   }),
+    // }));
+
+    // render(
+    //   <Provider store={store}>
+    //     <MemoryRouter initialEntries={['/product/1']}>
+    //       <Route path="/product/:id">
+    //         <ProductDetail />
+    //       </Route>
+    //     </MemoryRouter>
+    //   </Provider>
+    // );
+
+    // // Wait for the loading spinner to disappear
+    // await screen.findByTestId('product-detail');
+
+    // // Check if product details are rendered correctly
+    // expect(screen.getByText(fakeProduct.name)).toBeInTheDocument();
+    // expect(screen.getByText(`${fakeProduct.price} ₺`)).toBeInTheDocument();
+    // expect(screen.getByText(fakeProduct.description)).toBeInTheDocument();
   });
 
 

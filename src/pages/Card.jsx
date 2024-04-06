@@ -22,7 +22,7 @@ const Card = () => {
   const handleAddToCart= (product) => {
 
     addLocalStorage(product)
-   // dispatch(addToCart(product))
+    dispatch(addToCart(product))
     dispatch(localProducts(product))
   }
 

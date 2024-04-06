@@ -15,7 +15,7 @@ export default function cartReducer(state = initialState, { type, payload }) {
   
   switch (type) {
     case ADD_TO_CART:
-      addLocalStorage(payload)
+      //addLocalStorage(payload)
       console.log(state.cartItems)
 
       let product = state.cartItems.find((c) => c.product.id === payload.id);

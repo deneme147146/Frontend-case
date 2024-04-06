@@ -31,7 +31,7 @@ const CartList = () => {
   const handleAddToCart = (product) =>{
 
     //dispatch(localProduct(product))
-    dispatch(addToCart(product))
+    dispatch(addToCart(product))  // fiyat chekout
     addLocalStorage(product)
     dispatch(localProducts(product))
   }
@@ -54,7 +54,7 @@ const CartList = () => {
   const handleDeleteToCart= (product) =>{
       dispatch(deleteToCart(product))
       removeFromLocalStorage(product)
-     //dispatch(localProductsDelete(product))
+     dispatch(localProductsDelete(product))
       
   }
 
