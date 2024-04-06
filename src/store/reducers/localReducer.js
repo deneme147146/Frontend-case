@@ -23,6 +23,7 @@ export default function localReducer(state = initialState, action) {
               cartItems.push({ product: action.payload, quantity: 1 });
               return { ...state, localProduct:cartItems };
               
+              console.log("deneme")
             }
       
             localStorage.setItem("cart", JSON.stringify(cartItems)); // Update local storage
