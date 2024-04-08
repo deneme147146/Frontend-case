@@ -18,7 +18,8 @@
 
 .header-center{
   
-  grid-column: span 6
+  grid-column: span 6;
+
 }
 
 .header-right{
@@ -27,10 +28,40 @@
 
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 808px) {
+  .header-center {
+    width: 100%; /* Tam genişlik yapın */
+    display: flex;
+    justify-content: center; /* Yatayda ortala */
+    align-items: center;
+    flex-direction: column; /* Dikeyde sırala */
+  }
+
+  .header-center input {
+    width: 80%; /* İstediğiniz boyuta göre ayarlayın */
+    max-width: 300px; /* Maksimum genişlik belirleyin */
+    margin-bottom: 10px; /* İstediğiniz boşluk değerini belirleyin */
+  }
+}
+
+@media screen and (max-width: 808px) {
  
   .header {
       grid-template-columns: 1fr; 
+  }
+  .header-left {
+    grid-column: span 12; /* Sol bölümü tam genişlik yapın */
+    margin-left: 0; /* Ek bir margin bırakmayın */
+  }
+
+  .header-center {
+    grid-column: span 12; /* Orta bölümü tam genişlik yapın */
+    justify-content: center; 
+  }
+
+  .header-right {
+    grid-column: span 12; /* Sağ bölümü tam genişlik yapın */
+    padding-bottom: 5px;
   }
 }
 .App{
@@ -58,19 +89,14 @@ body{
 
 
 
-@media (min-width: 768px) {
+
+
+@media (min-width: 808px) {
   .header-left {
     width: 25%;
     text-align: center;
   }
 
-  .header-center {
-    width: 50%;
-    height: 85%;
-    align-items: center;
-    display: flex;
-  }
+  
 }
-
-
 

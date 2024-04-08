@@ -25,17 +25,22 @@ const ProductDetail = () => {
 
       try {
         let productDetail = new ProductService()
+        console.log("productDetail",productDetail)
         productDetail.getByProductId(id).then(response=>setProduct(response.data))
         setLoading(false)
       } catch (error) {
         setLoading(true);
       }
-  },[id])
 
+      
+  },[id])
+ // console.log("product",product)
   if (loading) {
-    return <div>loading..<CircularProgress disableShrink /></div>;
+    return 
    }else if(!product){
-    return <div style={{textAlign:'center', justifyContent:'center', color:'blue'}}><CircularProgress disableShrink /> <LinearProgress /></div>;
+    return <div style={{ paddingTop:100, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'blue' }}>ürün <CircularProgress disableShrink /></div>
+     
+    //<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'blue' }}><CircularProgress disableShrink /></div>;
    }
 
    const handleAddToCart =(product) =>{
@@ -47,7 +52,7 @@ const ProductDetail = () => {
     dispatch(localProducts(product))
    }
 
-   
+  
 
 
   return (
@@ -61,9 +66,8 @@ const ProductDetail = () => {
        
       <div className='right'>
        {product.name}
-       <p>react-test</p>
       <p className="detail-price">{product.price} ₺</p> 
-      <button onClick={() => handleAddToCart(product)} className="detail-btn">Add to Cart</button>
+      <button id="test-add-to-cart-btn" onClick={() => handleAddToCart(product)} className="detail-btn">Add to Cart</button>
       {product.description}
       </div>
       </div>
