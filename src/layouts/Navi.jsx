@@ -9,6 +9,7 @@ import { searchCardList } from '../store/actions/productActions';
 const Navi = () => {
 
 
+
   const dispatch = useDispatch();
 
   const { originProducts, originLoading, originError} = useSelector((state) => state.product);

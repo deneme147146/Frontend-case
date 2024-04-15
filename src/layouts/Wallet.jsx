@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { IoPersonOutline } from "react-icons/io5";
 import { TfiBag } from "react-icons/tfi";
 import '../style/Wallet.css'
@@ -8,6 +8,9 @@ import { getTotalPrice } from '../helper/LocalStorageHelper';
 
 
 const Wallet = () => {
+
+
+
 
   const dispatch = useDispatch()
   const {cartItems} = useSelector(state=> state.cart)
@@ -24,6 +27,9 @@ const Wallet = () => {
       return totalPrice + cartItem.product.price * cartItem.quantity;
     }, 0);
   };
+
+  
+
   return (
     
     <div className="wallet-container">

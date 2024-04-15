@@ -53,7 +53,7 @@ describe('ProductDetail component', () => {
           </MemoryRouter>
         </Provider>
       );
-   // });
+   // }); waitfor da olur
    await screen.findByText(/Test Ürünü/);
    await screen.findByText('100 ₺');
    await screen.findByText(/Bu bir test ürünüdür/);
