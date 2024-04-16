@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword , signInWithEmailAndPassword , signOut} from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword , signInWithEmailAndPassword , signOut , updateProfile} from "firebase/auth";
 import toast, { Toaster } from 'react-hot-toast';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -19,11 +19,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
-export const register =  async (email, password) =>{
+export const register =  async (email, password, name) =>{
 
   try {
-    const user = await createUserWithEmailAndPassword(auth, email, password)
+    const user = await createUserWithEmailAndPassword(auth, email, password )
+
+    updateProfile(auth.currentUser , {displayName: name})
+    toast.success("kayıt başarılı")
     return user
+    
   } catch (error) {
     toast.error(error.message)
   }
@@ -34,6 +38,7 @@ export const login = async (email, password) => {
   try {
 
     const user = await signInWithEmailAndPassword(auth, email, password)
+    toast.success("giriş başarılı")
     return user
     
   } catch (error) {
@@ -44,9 +49,10 @@ export const login = async (email, password) => {
 export const logout = async () => {
   try {
     await signOut(auth)
+    toast.success("çıkış başarılı")
     return true
   } catch (error) {
-    
+    toast.error(error.message)
   }
 }
 

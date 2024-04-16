@@ -32,7 +32,7 @@ const ProductDetail = () => {
         setLoading(true);
       }
 
-      
+      //sayfaya logla test
   },[id])
  // console.log("product",product)
   if (loading) {

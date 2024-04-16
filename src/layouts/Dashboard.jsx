@@ -16,6 +16,7 @@ const Dashboard = () => {
       <div className='dash'>
       <Routes>
         <Route path='/' element={<ProductList></ProductList>}/>
+        <Route path='/products' element={<ProductList></ProductList>}/>
         
         <Route path='/products/:id' element={<ProductDetail></ProductDetail>}/>
       </Routes>

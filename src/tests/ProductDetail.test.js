@@ -24,23 +24,98 @@ const store = configureStore()
 expect(titleElement).toBeInTheDocument();
 });
 
-// Mock ProductService
+// // Mock ProductService
+// jest.mock('../services/productService', () => ({
+//   __esModule: true,
+//   default: jest.fn(() => ({
+//     getByProductId: jest.fn(() => Promise.resolve({
+//       data: {
+//         id: '-1',
+//         name: 'Test Ürünü',
+//         price: 100,
+//         image: 'test-image-url',
+//         description: 'Bu bir test ürünüdür.',
+//       },
+      
+//     })),
+//   })),
+// }));
+
+
 jest.mock('../services/productService', () => ({
   __esModule: true,
   default: jest.fn(() => ({
-    getByProductId: jest.fn(() => Promise.resolve({
-      data: {
-        id: '-1',
-        name: 'Test Ürünü',
-        price: 100,
-        image: 'test-image-url',
-        description: 'Bu bir test ürünüdür.',
-      },
-    })),
+    // getProducts: jest.fn(() =>
+    //   Promise.resolve({
+    //     data: [
+    //       {
+    //         id: '1',
+    //         name: 'Ürün 1',
+    //         price: 50,
+    //         image: 'urun-1.jpg',
+    //         description: 'Bu ürün 1.',
+    //       },
+    //       {
+    //         id: '2',
+    //         name: 'Ürün 2',
+    //         price: 75,
+    //         image: 'urun-2.jpg',
+    //         description: 'Bu ürün 2.',
+    //       },
+    //     ],
+    //   })
+    // ),
+    getByProductId: jest.fn((id) =>
+      Promise.resolve({
+        data: {
+          id,
+          name: `Ürün ${id}`,
+          price: 100,
+          image: `urun-${id}.jpg`,
+          description: `Bu ürün ${id}.`,
+        },
+      })
+    ),
+  })),
+}));jest.mock('../services/productService', () => ({
+  __esModule: true,
+  default: jest.fn(() => ({
+    getProducts: jest.fn(() =>
+      Promise.resolve({
+        data: [
+          {
+            id: '1',
+            name: 'Ürün 1',
+            price: 50,
+            image: 'urun-1.jpg',
+            description: 'Bu ürün 1.',
+          },
+          {
+            id: '-2',
+            name: 'Ürün 2',
+            price: 75,
+            image: 'urun-2.jpg',
+            description: 'Bu ürün 2.',
+          },
+        ],
+      })
+    ),
+    getByProductId: jest.fn((id) =>
+      Promise.resolve({
+        data: {
+          id,
+          name: `Ürün ${id}`,
+          price: 100,
+          image: `urun-${id}.jpg`,
+          description: `Bu ürün ${id}.`,
+        },
+      })
+    ),
   })),
 }));
 
-describe('ProductDetail component', () => {
+
+
   test('renders product details correctly', async () => {
     const store = configureStore();
 
@@ -67,7 +142,6 @@ describe('ProductDetail component', () => {
     expect(priceElement).toBeInTheDocument();
     expect(descriptionElement).toBeInTheDocument();
   });
-});
 
 
 // jest.mock('../store/actions/cartActions', () => ({
