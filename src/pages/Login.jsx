@@ -30,7 +30,7 @@ const Login = () => {
 
   return (
 
-    <div style={{display:'flex' , justifyContent:'center', padding:5, margin:10}}>
+    <div className="login-box" style={{display:'flex' , justifyContent:'center', padding:5, margin:10}}>
 
 
 

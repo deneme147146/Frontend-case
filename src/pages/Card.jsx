@@ -12,18 +12,23 @@ import { localProducts } from '../store/actions/localActions'
 const Card = () => {
 
   const dispatch = useDispatch()
-
+  const {user } = useSelector(state => state.auth)
   const { products, loading, error } = useSelector((state) => state.product);
   const [currentPage, setCurrentPage] =useState(1)
   const productsPerPage = 12;
   const [cartItems , setCartItems] = useState([])
   const { localProduct} = useSelector((state) => state.local);
 
-  const handleAddToCart= (product) => {
+  let email = user.user.email
 
-    addLocalStorage(product)
+
+
+  const handleAddToCart= (product) => {
+    
+    addLocalStorage({email: email, product: product})
     dispatch(addToCart(product))
-    dispatch(localProducts(product))
+    dispatch(localProducts(email,product))
+    
   }
 
 

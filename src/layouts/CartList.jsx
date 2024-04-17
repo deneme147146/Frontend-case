@@ -11,15 +11,22 @@ import { localProducts , localProductsDelete } from '../store/actions/localActio
 
 const CartList = () => {
   const { products, loading, error } = useSelector((state) => state.product);
-
+  const {user } = useSelector(state => state.auth)
  const { localProduct} = useSelector((state) => state.local);
   const [productLocalStorage,setProductLocalStorage] = useState() //değiş
   const [priceLocalStorage,setPriceLocalStorage] = useState() //değiş
 
   const [isLocalStorageLoaded, setIsLocalStorageLoaded] = useState(false);
   const dispatch = useDispatch()
-
+  let email = "a"
+  let auth = JSON.parse(localStorage.getItem("user")).user.email
+ if(user){
+  email = user.user.email
+ }
   const total = getTotalPrice();
+console.log("firebaselocalproduct",localProduct)
+ const firebasee=localProduct.filter(cart =>cart.user ===auth)
+
 
 
   console.log("toplam fiat", total)
@@ -32,8 +39,9 @@ const CartList = () => {
 
     //dispatch(localProduct(product))
     dispatch(addToCart(product))  // fiyat chekout
-    addLocalStorage(product)
-    dispatch(localProducts(product))
+    addLocalStorage({email: email, product: product})
+    dispatch(localProducts(email,product))
+    
   }
 
 
@@ -41,7 +49,7 @@ const CartList = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getFromLocalStorage();
+      const data = await getFromLocalStorage(email);
       console.log("DATA",data)
       setProductLocalStorage(data);
     
@@ -53,8 +61,8 @@ const CartList = () => {
  
   const handleDeleteToCart= (product) =>{
       dispatch(deleteToCart(product))
-      removeFromLocalStorage(product)
-     dispatch(localProductsDelete(product))
+      removeFromLocalStorage({email: email, product: product})
+     dispatch(localProductsDelete(email,product))
       
   }
 
@@ -65,7 +73,7 @@ const CartList = () => {
  
 console.log("cartitems",cartItems)
 
-const data = getFromLocalStorage()
+const data = getFromLocalStorage(email)
 
 console.log("productLocalStorage" , productLocalStorage)
 
@@ -81,7 +89,7 @@ console.log("productLocalStorage" , productLocalStorage)
           {
             // varsa döndür yoksa hata verme demek
      // productLocalStorage && productLocalStorage.map((cartItem) => 
-       localProduct.map((cartItem) => 
+     firebasee.map((cartItem) => 
             <><div key={cartItem?.product?.id}>
                 <p className='marka-name' style={{ display: 'inline' }}>{cartItem?.product?.name}</p>
                 <button onClick={() => handleAddToCart(cartItem?.product)} className='btnn'>+</button>

@@ -7,9 +7,13 @@ import { getFromLocalStorage, getTotalPrice } from '../helper/LocalStorageHelper
 
 const Checkout = () => {
 
-
+  const {user } = useSelector(state => state.auth)
   const {cartItems} = useSelector(state=> state.cart)
+  let email = "a"
 
+ if(user){
+  email = user.user.email
+ }
   const [productLocalStorage,setProductLocalStorage] = useState() //değiş
   
   const total = getTotalPrice();
@@ -19,7 +23,7 @@ const Checkout = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getFromLocalStorage();
+      const data = await getFromLocalStorage(email);
       console.log("DATA",data)
       setProductLocalStorage(data);
     

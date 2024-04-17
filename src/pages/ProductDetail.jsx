@@ -11,7 +11,8 @@ import { localProducts } from '../store/actions/localActions';
 
 const ProductDetail = () => {
     let {id} = useParams()
-
+    const {user } = useSelector(state => state.auth)
+    let email = user.user.email
     const dispatch = useDispatch()
 
     const [product, setProduct] = useState(null);
@@ -45,11 +46,11 @@ const ProductDetail = () => {
 
    const handleAddToCart =(product) =>{
    
-    addLocalStorage(product)
+    addLocalStorage({email: email, product: product})
     //dispatch(addToCart(product))
     dispatch(addToCart(product))
    
-    dispatch(localProducts(product))
+    dispatch(localProducts(email,product))
    }
 
   

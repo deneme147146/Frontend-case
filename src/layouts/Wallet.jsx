@@ -17,7 +17,11 @@ const Wallet = () => {
  
   const {user } = useSelector(state => state.auth)
   //console.log('user',user.user.email);
+  let eemail= "a"
 
+ if(user){
+  eemail = user.user.email
+ }
   if(user){
     name=user._tokenResponse.displayName
     let email = user.user.email
