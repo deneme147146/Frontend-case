@@ -1,5 +1,33 @@
-
+.login-box{
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    margin: 10;
+}
 
 .login-container{
     display: block;
+}
+
+
+@media screen and  (max-width:760px){
+    .login-box{
+        display: block;
+        
+    }   
+    .login-container{
+        display: grid;
+        justify-content: center;
+        align-items: center;
+    }
+    .register-container{
+        display: grid;
+        justify-content: center;
+        align-items: center;
+    }
+    .inpt{
+        width: 200
+    }
+    
+    
 }

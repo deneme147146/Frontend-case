@@ -45,8 +45,10 @@ export default function localReducer(state = initialState, action) {
             return { ...state, cartItems };
             
         case LOCAL_PRODUCTS_DELETE:
+         let  userrrr = JSON.parse(localStorage.getItem("user")).user.email; 
+          cartItems = state.localProduct.slice();
           
-        cartsOfUser = cartItems.filter(cart => cart.user === userrr);
+        cartsOfUser = cartItems.filter(cart => cart.user === userrrr);
         const  existingItemIndexDelete = cartsOfUser.findIndex(
           (item) => item.product.id === action.payload.id
           
@@ -54,10 +56,11 @@ export default function localReducer(state = initialState, action) {
 
           
   if (existingItemIndexDelete !== -1) {
+    
 
 
     let index = cartItems.findIndex(
-      (item) => item.product.id === cartsOfUser[existingItemIndex].product.id && item.user === userrr.user.email
+      (item) => item.product.id === cartsOfUser[existingItemIndexDelete].product.id && item.user === userrrr
     );
     // Decrease the quantity if the product is in the cart
     if (cartItems[index].quantity <= 1) { // Değişiklik burada

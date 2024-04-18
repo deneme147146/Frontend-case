@@ -30,22 +30,22 @@ const Login = () => {
 
   return (
 
-    <div className="login-box" style={{display:'flex' , justifyContent:'center', padding:5, margin:10}}>
+    <div className="login-box">
 
 
 
     <div style={{margin:30}} className="login-container">
 
-        <p>Giriş yap</p>
+        <p className="giris-name">Giriş yap</p>
           <form onSubmit={handleSubmit}>
-              <input
+              <input className="inpt"
                   style={{ display: "block", height: 35, width: 300, marginTop: 10 }}
                   value={email}
                   type="text"
                   placeholder="email"
                   onChange={(e) => setEmail(e.target.value)}
               ></input>
-              <input
+              <input className="inpt"
                   style={{
                       display: "block",
                       marginTop: 10,
