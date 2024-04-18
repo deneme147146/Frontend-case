@@ -65,6 +65,7 @@ export const removeFromLocalStorage = (obj) => {
 
     if (cartItems[index].quantity <= 0) {
       cartItems.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cartItems));
     }
   }
   // Güncellenmiş sepet ürünlerini tekrar local storage'a kaydet
