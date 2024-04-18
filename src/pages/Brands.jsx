@@ -35,6 +35,7 @@ const Brands = () => {
 
   const handleBrandChange = (e) => {
     const brand = e.target.value;
+   
     const isChecked = e.target.checked;
     if (isChecked) {
       dispatch(brandsList(brand));

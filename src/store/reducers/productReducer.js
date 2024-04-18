@@ -72,7 +72,8 @@ export default function productReducer(state = initialState, action) {
             };  
 
             case BRANDS_LIST:
-              const brandList= state.products.filter((brand) => action.payload===brand)
+              const brandList= [...state.products.filter((brand) => action.payload===brand.brand)]
+              console.log("action", action.payload)
               return{
                 ...state,
                 products: brandList
