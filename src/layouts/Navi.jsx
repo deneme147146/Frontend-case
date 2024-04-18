@@ -26,6 +26,9 @@ const Navi = () => {
       setFilteredProducts(filtered)
 
       dispatch(searchCardList(filtered));
+
+      console.log("FİLTERED DATA", filtered.map(item => item.brand));
+
    
   }
 

@@ -71,6 +71,14 @@ export default function productReducer(state = initialState, action) {
               products: sortedProductsNewToHigh,
             };  
 
+            case BRANDS_LIST:
+              const brandList= state.products.filter((brand) => action.payload===brand)
+              return{
+                ...state,
+                products: brandList
+
+              }
+
           
 
            case SEARCH_CARD_LIST:

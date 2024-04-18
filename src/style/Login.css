@@ -9,6 +9,23 @@
     display: block;
 }
 
+.inpt{
+    border: 2px solid #434343;
+    border-radius: 5px;
+    
+    font-size: 16px;
+    color: #333;
+}
+
+.btn-login{
+    background-color: dodgerblue;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #000;
+    
+
+
+}
 
 @media screen and  (max-width:760px){
     .login-box{

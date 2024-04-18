@@ -15,6 +15,7 @@ export const fetchProducts = () => async (dispatch) =>{
     try {
         const response = await productService.getProducts();
         dispatch(originProducts(response.data))
+       // console.log("BRAND", response.data.data.brand);
         
         dispatch(fetchProductsSuccess(response.data))
     } catch (error) {

@@ -58,7 +58,7 @@ const Login = () => {
                   placeholder="password"
                   onChange={(e) => setPassword(e.target.value)}
               ></input>
-              <button disabled={!email || !password} type="submit">
+              <button className="btn-login" disabled={!email || !password} type="submit">
                   giriş yap
               </button>
           </form>

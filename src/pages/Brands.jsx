@@ -9,10 +9,11 @@ const Brands = () => {
 
   const dispatch = useDispatch();
 
-
-  const [products,setProducts] = useState([])
+  const { products, loading, error } = useSelector((state) => state.product);
+  const [productss,setProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
+  const [selectedBrands, setSelectedBrands] = useState([]);
 
   useEffect(()=>{
     const productsService = new ProductService()
@@ -26,19 +27,21 @@ const Brands = () => {
   const handleSearch =(e) =>{
     const searchTerm = e.target.value.toLowerCase();
     setSearchTerm(searchTerm)
-    const filtered = products.filter(product=> 
+    const filtered = productss.filter(product=> 
       product.brand.toLowerCase().includes(searchTerm))
 
       setFilteredProducts(filtered)
   }
 
-  // const handleBrands = (selectedBrand)=> {
-  //   const filtered = brandsProducts.filter(product=> 
-  //     product.brand.includes(selectedBrand))
+  const handleBrandChange = (e) => {
+    const brand = e.target.value;
+    const isChecked = e.target.checked;
+    if (isChecked) {
+      dispatch(brandsList(brand));
+    }
     
-  //   dispatch(brandsList(filtered))
-  //  onChange={() => handleBrands(product.brand)}
-  // }
+  }
+
   
   return (
     <div className='all-brands'>
@@ -53,7 +56,7 @@ const Brands = () => {
         {
           filteredProducts.map(product=> (
             <><div key={product.id}>
-              <input type="checkbox"  id={product.brand} name="brands" value={product.brand}    />
+              <input type="checkbox"  id={product.brand} name="brands" value={product.brand}   onChange={handleBrandChange} />
               <label htmlFor={product.brand}>{product.brand}</label>
             </div><br /></>
           ))
