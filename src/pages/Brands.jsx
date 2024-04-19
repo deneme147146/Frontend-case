@@ -48,6 +48,13 @@ const Brands = () => {
       dispatch(brandsList(updatedSelectedBrands)); // Redux'a yeni filtrelenmiş verileri gönder
       console.log("brands,", updatedSelectedBrands); // Filtrelenmiş verileri konsola yazdır
     }
+    else if(!isChecked){
+      const updatedSelectedBrands = selectedBrands.filter(selectedBrand => !selectedBrand.brand.includes(brand));
+    setSelectedBrands(updatedSelectedBrands);
+    dispatch(brandsList(updatedSelectedBrands));
+    console.log("brands,", updatedSelectedBrands);
+
+    }
     }
     
     
