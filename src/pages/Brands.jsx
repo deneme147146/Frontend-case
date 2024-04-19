@@ -55,6 +55,7 @@ const Brands = () => {
     console.log("brands,", updatedSelectedBrands);
 
     }
+    
     }
     
     

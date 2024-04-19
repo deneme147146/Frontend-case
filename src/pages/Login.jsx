@@ -20,8 +20,12 @@ const Login = () => {
     e.preventDefault();
 
     const user = await login(email, password);
-    dispatch(loginHandler(user))
-    console.log(user);
+
+    if(user){
+        dispatch(loginHandler(user))
+        console.log(user);
+    }
+   
 
   };
 
