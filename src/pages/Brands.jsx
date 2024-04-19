@@ -53,6 +53,9 @@ const Brands = () => {
     setSelectedBrands(updatedSelectedBrands);
     dispatch(brandsList(updatedSelectedBrands));
     console.log("brands,", updatedSelectedBrands);
+    if (updatedSelectedBrands.length === 0) {
+      dispatch(brandsList(originProducts));
+  }
 
     }
     
