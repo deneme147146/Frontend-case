@@ -2,19 +2,23 @@ import React, { useEffect, useState } from 'react'
 import '../style/Brands.css'
 import ProductService from '../services/productService'
 import { useDispatch, useSelector } from 'react-redux';
-import { brandsList } from '../store/actions/productActions';
+import { brandsList, updateBrands } from '../store/actions/productActions';
 
 const Brands = () => {
 
 
   const dispatch = useDispatch();
   const { originProducts, originLoading, originError} = useSelector((state) => state.product);
+  
+  
+  
 
   const { products, loading, error } = useSelector((state) => state.product);
   const [productss,setProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedBrands, setSelectedBrands] = useState([]);
+  const [updateBrandss, setUpdateBrands] = useState([]);
 
 
   useEffect(()=>{
@@ -44,23 +48,26 @@ const Brands = () => {
     if (isChecked) {
       const newFiltered = originProducts.filter(product => product.brand.includes(brand));
       const updatedSelectedBrands = [...selectedBrands, ...newFiltered]; 
-      setSelectedBrands(updatedSelectedBrands); // Yeni filtrelenmiş verileri seçili markalar listesine ata
+      setSelectedBrands(updatedSelectedBrands); 
+      setUpdateBrands(updatedSelectedBrands)
       dispatch(brandsList(updatedSelectedBrands)); // Redux'a yeni filtrelenmiş verileri gönder
-      console.log("brands,", updatedSelectedBrands); // Filtrelenmiş verileri konsola yazdır
+      console.log("brands,", updatedSelectedBrands); 
+      dispatch(updateBrands(updatedSelectedBrands))
     }
     else if(!isChecked){
       const updatedSelectedBrands = selectedBrands.filter(selectedBrand => !selectedBrand.brand.includes(brand));
     setSelectedBrands(updatedSelectedBrands);
+    setUpdateBrands(updatedSelectedBrands)
     dispatch(brandsList(updatedSelectedBrands));
-    console.log("brands,", updatedSelectedBrands);
+    console.log("brandss,", updatedSelectedBrands);
+    dispatch(updateBrands(updatedSelectedBrands))
     if (updatedSelectedBrands.length === 0) {
       dispatch(brandsList(originProducts));
+      
   }
-
     }
     
     }
-    
     
   
 

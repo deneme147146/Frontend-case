@@ -1,11 +1,12 @@
 /* eslint-disable no-duplicate-case */
-import { FETCH_PRODUCTS_FAILURE , FETCH_PRODUCTS_REQUEST , FETCH_PRODUCTS_SUCCESS , SEARCH_CARD_LIST, BRANDS_LIST , BRAND_PRODUCTS,
+import { FETCH_PRODUCTS_FAILURE , FETCH_PRODUCTS_REQUEST , FETCH_PRODUCTS_SUCCESS , SEARCH_CARD_LIST, BRANDS_LIST , BRAND_PRODUCTS, UPDATE_BRANDS,
   SORT_BY_OLD_TO_NEW , SORT_BY_NEW_TO_OLD , SORT_BY_HIGH_TO_LOW , SORT_BY_LOW_TO_HIGH, ORIGIN_PRODUCTS} from "../actions/productActions";
 import { products } from "../initialValues/productItems";
 
 const initialState = {
   products: [],
   originProducts: [],
+  updateBrands: [],
 
   loading: false,
 
@@ -21,6 +22,13 @@ export default function productReducer(state = initialState, action) {
         loading:false,
         originProducts:action.payload
       };
+
+      case UPDATE_BRANDS:
+        return {
+          ...state,
+          loading:false,
+          updateBrands:action.payload
+        };
 
     
 

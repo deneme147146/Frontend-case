@@ -16,7 +16,13 @@ const Navi = () => {
 
   const [filteredProducts, setFilteredProducts] = useState([])
 
+  //  burger menu
 
+  const [burger_class, setBurgerClass] = useState("burger-bar unclicked")
+  const [menu_class, setMenuClass] = useState("menu hidden")
+  const [isMenuClicked, setIsMenuClicked] = useState(false)
+
+  //
   const handleSearch =(e) =>{
     const searchTerm = e.target.value.trim().toLowerCase();
     console.log("PRODUCTS",originProducts.length)
@@ -40,7 +46,18 @@ const Navi = () => {
   },[filteredProducts])
 
 
+  const updateMenu = () => {
+    if (!isMenuClicked) {
+      setBurgerClass("burger-bar clicked")
+      setMenuClass("menu visible")
+      
+    } else {
 
+      setBurgerClass("burger-bar unclicked")
+      setMenuClass("menu hidden")
+      
+    }
+  }
 
 
   return (
@@ -48,8 +65,20 @@ const Navi = () => {
     
       
     <div className='header'>
+      
         <div className='header-left'>
-        <h2>Eteration</h2>
+        {/* <div className='burger-menu'>
+            <div className={burger_class} onClick={updateMenu}></div>
+            <div className={burger_class} onClick={updateMenu}></div>
+            <div className={burger_class} onClick={updateMenu}></div>
+            
+          </div> */}
+
+          <div >
+          <h2>Eteration</h2>
+          </div>
+          
+        
         </div>
 
         <div className='header-center'>

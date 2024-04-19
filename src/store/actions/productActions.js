@@ -9,11 +9,18 @@ export const SORT_BY_HIGH_TO_LOW = 'SORT_BY_HIGH_TO_LOW';
 export const SORT_BY_LOW_TO_HIGH = 'SORT_BY_LOW_TO_HIGH';
 export const BRANDS_LIST = 'BRANDS_LIST';
 export const SEARCH_CARD_LIST = 'SEARCH_CARD_LIST'
+export const UPDATE_BRANDS = 'UPDATE_BRANDS'
 
 
 export const originProducts = (product) => ({
  
         type: ORIGIN_PRODUCTS,
+        payload: product
+})
+
+export const updateBrands = (product) => ({
+ 
+        type: UPDATE_BRANDS,
         payload: product
 })
 
