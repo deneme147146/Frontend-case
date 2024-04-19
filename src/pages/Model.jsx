@@ -2,11 +2,13 @@
 import React, { useEffect, useState } from 'react'
 import '../style/Model.css'
 import ProductService from '../services/productService'
+import { useSelector } from 'react-redux'
 
 const Model = () => {
   const [products,setProducts] = useState([])
   const [filteredProducts, setfilteredProducts] = useState([])
   const [searchTerm, setSearchTerm] = useState([])
+  const { brandsProducts} = useSelector((state) => state.product);
 
   useEffect(()=>{
     const productsService = new ProductService()

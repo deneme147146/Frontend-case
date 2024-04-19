@@ -8,12 +8,14 @@ const Brands = () => {
 
 
   const dispatch = useDispatch();
+  const { originProducts, originLoading, originError} = useSelector((state) => state.product);
 
   const { products, loading, error } = useSelector((state) => state.product);
   const [productss,setProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedBrands, setSelectedBrands] = useState([]);
+
 
   useEffect(()=>{
     const productsService = new ProductService()
@@ -32,16 +34,24 @@ const Brands = () => {
 
       setFilteredProducts(filtered)
   }
+  
 
   const handleBrandChange = (e) => {
     const brand = e.target.value;
+    
    
     const isChecked = e.target.checked;
     if (isChecked) {
-      dispatch(brandsList(brand));
+      const newFiltered = originProducts.filter(product => product.brand.includes(brand));
+      const updatedSelectedBrands = [...selectedBrands, ...newFiltered]; 
+      setSelectedBrands(updatedSelectedBrands); // Yeni filtrelenmiş verileri seçili markalar listesine ata
+      dispatch(brandsList(updatedSelectedBrands)); // Redux'a yeni filtrelenmiş verileri gönder
+      console.log("brands,", updatedSelectedBrands); // Filtrelenmiş verileri konsola yazdır
+    }
     }
     
-  }
+    
+  
 
   
   return (

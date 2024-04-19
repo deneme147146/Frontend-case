@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { fetchProductsFailure, fetchProductsSuccess, fetchProductsRequest, originProducts } from "./actions/productActions";
+import { fetchProductsFailure, fetchProductsSuccess, fetchProductsRequest, originProducts , brandProducts } from "./actions/productActions";
 import ProductService from "../services/productService";
 import { brandsProducts } from "./initialValues/productItems";
 
@@ -15,6 +15,7 @@ export const fetchProducts = () => async (dispatch) =>{
     try {
         const response = await productService.getProducts();
         dispatch(originProducts(response.data))
+        dispatch(brandProducts(response.data))
        // console.log("BRAND", response.data.data.brand);
         
         dispatch(fetchProductsSuccess(response.data))
